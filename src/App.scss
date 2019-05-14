@@ -1,13 +1,10 @@
 //base
-@import "./stylesheets/base/base.scss";
-@import "./stylesheets/base/var.scss";
-@import "./stylesheets/base/fonts.scss";
-@import "./stylesheets/base/typography.scss";
+
+@import "./styles/base/var.scss";
+@import "./styles/base/fonts.scss";
+@import "./styles/base/typography.scss";
 
 
 //components
-@import "./stylesheets/components/Header.scss";
-@import "./stylesheets/components/Footer.scss";
+@import "./styles/components/Footer.scss";
 
-//pages
-@import "./stylesheets/pages/mainpage.scss";

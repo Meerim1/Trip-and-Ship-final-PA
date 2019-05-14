@@ -1,0 +1,64 @@
+import React, { Component } from "react";
+import { Container } from "reactstrap";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import colors from "../../config/var";
+
+class HeaderBottom extends Component {
+  render() {
+    return (
+      <HeaderDown>
+        <Container>
+          <HeaderNav>
+            <Navlink className="font-link">
+              <Link to="/">Главная</Link>
+            </Navlink>
+            <Navlink className="font-link">
+              <Link to="/search:apps">Искать заявки на доставку</Link>
+            </Navlink>
+            <Navlink className="font-link">
+              <Link to="/search:trips">Искать путешествия</Link>
+            </Navlink>
+            <Navlink className="font-link">
+              <Link to="/add:trip">Добавить путешествие</Link>
+            </Navlink>
+            <Navlink className="font-link">
+              <Link to="/add:app">Добавить заявку</Link>
+            </Navlink>
+          </HeaderNav>
+        </Container>
+      </HeaderDown>
+    );
+  }
+};
+
+
+const HeaderDown = styled.div`
+  padding: 1em 0;
+`;
+
+const HeaderNav = styled.ul`
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  margin-bottom: 0;
+`;
+
+const Navlink = styled.li`
+  font-weight: bold;
+  margin-right: 1.5em;
+  color: ${colors.dark_blue};
+  &:hover {
+    color: ${colors.yellow};
+  }
+  a {
+    color: ${colors.dark_blue};
+    text-decoration: none;
+    &:hover {
+      color: ${colors.yellow};
+    }
+  }
+`;
+
+
+export default HeaderBottom;
