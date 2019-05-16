@@ -5,16 +5,14 @@ import colors from "../../config/var";
 
 class SectionBlock extends Component {
   render() {
-    return <SSectionBlock>{this.props.children}</SSectionBlock>;
+    return <SSectionBlock >{this.props.children}</SSectionBlock>;
   }
 }
 
 const SSectionBlock = styled.div`
+  background-color:  "#fefefe";
   padding: 4em 0;
-  height: 400px;
-  border-bottom: 1px solid ${colors.light_grey};
-  display: ${props => (props.flex ? "flex" : "block")};
-  justify-content: ${props => (props.flex ? "center" : "false")};
+  height: auto;
 `;
 
 export default SectionBlock;

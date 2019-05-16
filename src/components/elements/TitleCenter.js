@@ -3,15 +3,22 @@ import styled from "styled-components";
 
 class TitleCenter extends Component {
   render() {
-    return <STitleCenter>{this.props.children}</STitleCenter>;
+    return (
+      <STitleCenter>
+        <h3>{this.props.children}</h3>
+      </STitleCenter>
+    );
   }
 }
 
-const STitleCenter = styled.h2`
+const STitleCenter = styled.div`
   font-family: "Rubik", sans-serif;
-  font-weight: 400;
-  display:inline-block;
-  margin: 0 auto;
+  display: flex;
+  width: 100%;
+  justify-content:center;
+  h3{
+    font-weight: 400;
+  }
 `;
 
 export default TitleCenter;

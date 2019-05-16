@@ -3,6 +3,7 @@ import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import colors from "../../config/var";
+import { FacebookIcon, TelegramIcon, InstagramIcon } from "../../components";
 
 class Footer extends Component {
   render() {
@@ -40,9 +41,16 @@ class Footer extends Component {
             <SFooterContacts>
               <p>Мы в соцсетях:</p>
               <SFooterIcons>
-                <a />
-                <a facebook="true" />
-                <a instagram="true" />
+                <a>
+                  <TelegramIcon />
+                </a>
+                <a>
+                  <FacebookIcon />
+                </a>
+
+                <a>
+                  <InstagramIcon />
+                </a>
               </SFooterIcons>
             </SFooterContacts>
           </SFooterWrapper>
@@ -64,6 +72,7 @@ const SFooterWrapper = styled.div`
   justify-content: space-between;
   padding-top: 0.8em;
   a {
+    color: ${colors.white};
     font-size: 14px;
     text-decoration: none;
     font-weight: 600;
@@ -96,11 +105,10 @@ const SFooterIcons = styled.div`
     width: 2em;
     height: 2em;
     margin-right: 0.5em;
-    background-color: ${colors.yellow};
-    /* background-image: ${props =>
-      props.facebook
-        ? 'url("/static/icons/facebook.png")'
-        : 'url("/static/icons/telegram.png")'} */
+    svg {
+      width: 30px;
+      height: 30px;
+    }
   }
 `;
 export default Footer;

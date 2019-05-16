@@ -2,14 +2,14 @@ import styled from "styled-components";
 import colors from "../../config/var";
 
 const Button = styled.button`
-  background-color: ${props => (props.yellow ? "#f9aa3c" : "white")};
+  background-color: ${props => (props.yellow ? "#41c191" : "white")};
   color: ${props => (props.yellow ? "#fefefe" : "#333d42")};
   box-sizing: border-box;
-  border: 1.5px solid ${props => (props.yellow ?"#f9aa3c" : "#333d42")};
+  border: 1.5px solid ${props => (props.yellow ?"#41c191" : "#333d42")};
   text-decoration: none;
   margin: 0 0 0 10px;
   outline: none;
-  font-family: "Rubik-Regular";
+  font-family: "Rubik";
   font-style: normal;
   font-stretch: normal;
   font-weight: ${props => (props.yellow ? "600" : "400")};

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import colors from "../../config/var";
 
 class HeaderBottom extends Component {
@@ -9,29 +9,34 @@ class HeaderBottom extends Component {
     return (
       <HeaderDown>
         <Container>
-          <HeaderNav>
-            <Navlink className="font-link">
-              <Link to="/">Главная</Link>
-            </Navlink>
-            <Navlink className="font-link">
-              <Link to="/search:apps">Искать заявки на доставку</Link>
-            </Navlink>
-            <Navlink className="font-link">
-              <Link to="/search:trips">Искать путешествия</Link>
-            </Navlink>
-            <Navlink className="font-link">
-              <Link to="/add:trip">Добавить путешествие</Link>
-            </Navlink>
-            <Navlink className="font-link">
-              <Link to="/add:app">Добавить заявку</Link>
-            </Navlink>
-          </HeaderNav>
+          <ThemeProvider theme={theme}>
+            <HeaderNav>
+              <Navlink className="font-link">
+                <Link to="/">Главная</Link>
+              </Navlink>
+              <Navlink className="font-link">
+                <Link to="/search:apps">Искать заявки на доставку</Link>
+              </Navlink>
+              <Navlink className="font-link">
+                <Link to="/search:trips">Искать путешествия</Link>
+              </Navlink>
+              <Navlink className="font-link">
+                <Link to="/add:trip">Добавить путешествие</Link>
+              </Navlink>
+              <Navlink className="font-link">
+                <Link to="/add:app">Добавить заявку</Link>
+              </Navlink>
+            </HeaderNav>
+          </ThemeProvider>
         </Container>
       </HeaderDown>
     );
   }
-};
+}
 
+const theme = {
+  font: "Rubik"
+}
 
 const HeaderDown = styled.div`
   padding: 1em 0;
@@ -52,6 +57,8 @@ const Navlink = styled.li`
     color: ${colors.yellow};
   }
   a {
+    font-family: ${props => (props.theme.font)};
+    font-weight: 500;
     color: ${colors.dark_blue};
     text-decoration: none;
     &:hover {
@@ -59,6 +66,5 @@ const Navlink = styled.li`
     }
   }
 `;
-
 
 export default HeaderBottom;
