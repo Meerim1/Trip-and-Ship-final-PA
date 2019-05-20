@@ -11,12 +11,16 @@ export {default as BackgroundWrapper } from "./layout/BackgroundWrapper";
 export { default as Button } from "./elements/Button";
 export { default as TitleCenter } from "./elements/TitleCenter";
 export { default as TextBlock } from "./elements/TextBlock";
+export { default as SInput } from "./elements/SInput";
+export { default as STitle } from "./elements/STitle";
+export { default as SForm } from "./elements/SForm";
 
 //mainpage
 export { default as Title } from "./mainpage/Title";
 export { default as SearchBox } from "./mainpage/SearchBox";
 export { default as TopRequests } from "./mainpage/TopRequests";
 export { default as TopTrips } from "./mainpage/TopTrips";
+export { default as SimpleSlider } from "./mainpage/MainSlide/MainSlider"
 
 //icons
 export { default as FacebookIcon } from "./icons/FacebookIcon";

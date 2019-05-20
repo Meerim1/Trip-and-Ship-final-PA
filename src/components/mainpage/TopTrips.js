@@ -43,7 +43,7 @@ class TopTrips extends Component {
             <SFlexDiv between>
               <SFlexDiv>
                 <UserAvatar />
-                <h5>Николай Костер-Вальдау</h5>
+                <h5>Николай</h5>
               </SFlexDiv>
               <Button>Попросить доставить</Button>
             </SFlexDiv>
@@ -85,7 +85,7 @@ class TopTrips extends Component {
             <SFlexDiv between>
               <SFlexDiv>
                 <UserAvatar />
-                <h5>Нурлан Сабуров</h5>
+                <h5>Эмилия</h5>
               </SFlexDiv>
               <Button>Попросить доставить</Button>
             </SFlexDiv>
