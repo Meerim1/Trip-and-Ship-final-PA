@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import colors from "../../config/var";
+import { colors } from "../../config/var";
 import { FacebookIcon, TelegramIcon, InstagramIcon } from "../../components";
 
 class Footer extends Component {

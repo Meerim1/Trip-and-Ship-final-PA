@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 const SForm = styled.form`
-    display: flex;
-    justify-content:space-between;
-    flex-direction:column;
-    width: 40%;
-`
+  margin: 3em 0 2.5em 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: ${props => (props.row ? "row" : "column")};
+  width: ${props => (props.medium ? "70%" : "40%")};
+  align-items: center;
+  text-align: center
+`;
 
 export default SForm;

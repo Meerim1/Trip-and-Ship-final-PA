@@ -4,4 +4,8 @@ export {default as RegisterPage } from "./RegisterPage";
 export {default as LoginPage } from "./LoginPage";
 export {default as NewRequestPage } from "./NewRequestPage";
 export {default as NewTripPage } from "./NewTripPage";
-
+export {default as Requests } from "./Requests";
+export {default as Trips } from "./Trips";
+export {default as ProfilePage } from "./ProfilePage";
+export {default as OneRequestPage } from "./OneRequestPage";
+export {default as OneTripPage } from "./OneTripPage";

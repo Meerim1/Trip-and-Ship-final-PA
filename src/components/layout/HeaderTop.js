@@ -1,39 +1,54 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import { Button } from "../index";
+import { SButton } from "../index";
 import { Link } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
-import colors from "../../config/var";
+import { theme, colors } from "../../config/var";
+import { Button } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  button: {
+    padding: "0.1em 1em",
+    "&$hover" :{
+      backgroundColor: "white"
+    }
+  }
+});
 
 class HeaderTop extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <SHeaderUpper>
         <Container>
-          <ThemeProvider theme={theme}>
             <SHeaderUpWrapper>
               <SHeaderLogo>
                 <Link to="/">Trip and Ship</Link>
               </SHeaderLogo>
-              <div>
-                <Button dark as="a" href="/">
+              <BtnGroup>
+                {/* <SButton dark to="/login">
                   Войти
-                </Button>
-                <Button yellow as="a" href="/">
+                </SButton>
+                <SButton yellow to="/register">
                   Регистрация
-                </Button>
-              </div>
+                </SButton> */}
+                <Button className={classes.button} variant="outlined" color="primary">Войти</Button>
+
+                <Button className={classes.button} variant="contained" color="primary">Регистрация</Button>
+              </BtnGroup>
             </SHeaderUpWrapper>
-          </ThemeProvider>
         </Container>
       </SHeaderUpper>
     );
   }
 }
 
-const theme = {
-  font: "Rubik"
-};
+const BtnGroup = styled.div`
+  display: flex;
+  width:20%;
+  justify-content: space-between;
+`
 
 const SHeaderUpper = styled.div`
   top: 0;
@@ -57,10 +72,10 @@ const SHeaderLogo = styled.div`
   a {
     color: ${colors.dark_blue};
     font-weight: 600;
-    &:hover{
+    &:hover {
       text-decoration: none;
       color: ${colors.yellow};
     }
   }
 `;
-export default HeaderTop;
+export default withStyles(styles)(HeaderTop);

@@ -8,12 +8,19 @@ export { default as SectionBlock } from "./layout/SectionBlock";
 export {default as BackgroundWrapper } from "./layout/BackgroundWrapper";
 
 //elements
-export { default as Button } from "./elements/Button";
+export { default as SButton } from "./elements/SButton";
+export { default as SButtonBigger } from "./elements/SButtonBigger";
 export { default as TitleCenter } from "./elements/TitleCenter";
 export { default as TextBlock } from "./elements/TextBlock";
 export { default as SInput } from "./elements/SInput";
 export { default as STitle } from "./elements/STitle";
 export { default as SForm } from "./elements/SForm";
+export { default as RequestCard } from "./elements/RequestCard";
+export { default as TripCard } from "./elements/TripCard";
+export { default as SLink } from "./elements/SLink";
+export { InputWithLabel, SLabel } from "./elements/InputWithLabel";
+
+
 
 //mainpage
 export { default as Title } from "./mainpage/Title";
@@ -21,6 +28,7 @@ export { default as SearchBox } from "./mainpage/SearchBox";
 export { default as TopRequests } from "./mainpage/TopRequests";
 export { default as TopTrips } from "./mainpage/TopTrips";
 export { default as SimpleSlider } from "./mainpage/MainSlide/MainSlider"
+
 
 //icons
 export { default as FacebookIcon } from "./icons/FacebookIcon";

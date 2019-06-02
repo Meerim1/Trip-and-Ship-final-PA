@@ -10,8 +10,8 @@ class LoginPage extends Component {
           <SectionBlock>
             <STitle>Войти</STitle>
             <SForm>
-              <SInput placeholder="Почта" />
-              <SInput placeholder="Пароль" type="password" />
+              <SInput bottom placeholder="Почта" />
+              <SInput bottom placeholder="Пароль" type="password" />
             </SForm>
           </SectionBlock>
         </Container>

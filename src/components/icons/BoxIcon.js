@@ -10,11 +10,11 @@ class BoxIcon extends PureComponent {
         width="120px"
         height="120px"
         viewBox="0 0 24 24"
-        aria-labelledby="inboxIconTitle inboxIconDesc"
+        ariaLabelledby="inboxIconTitle inboxIconDesc"
         stroke="#7a8384"
-        stroke-width="0.4"
-        stroke-linecap="square"
-        stroke-linejoin="miter"
+        strokeWidth="0.4"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
         fill="none"
         color="#7a8384"
         style={{marginLeft: "65px"}}
@@ -22,7 +22,7 @@ class BoxIcon extends PureComponent {
         {" "}
         <title id="inboxIconTitle">Фото товара отсутствует</title>{" "}
         <desc id="inboxIconDesc">Icon of cards sorting inbox</desc>{" "}
-        <path stroke-linecap="round" d="M3 10h6v3h6v-3h6" />{" "}
+        <path strokeLinecap="round" d="M3 10h6v3h6v-3h6" />{" "}
         <path d="M3 10l3-6h13l2 6v10H3z" />{" "}
       </svg>
     );

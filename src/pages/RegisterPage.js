@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import { SectionBlock, Layout, SInput, STitle, SForm } from "../components";
+import {
+  SectionBlock,
+  Layout,
+  SInput,
+  STitle,
+  SForm,
+  SLabel,
+  InputWithLabel
+} from "../components";
 
 class RegisterPage extends Component {
   render() {
@@ -9,13 +17,23 @@ class RegisterPage extends Component {
         <Container>
           <SectionBlock>
             <STitle>Регистрация</STitle>
-            <SForm>
-            <SInput placeholder="Почта"/>
-            <SInput placeholder="Имя" />
-            <SInput placeholder="Фамилия" />
-            <SInput placeholder="Дата Рождения" type="date"/>
-            <SInput placeholder="Пароль" type="password" />
-            <SInput placeholder="Подтверждение пароля" type="password" />
+            <SForm action="#">
+              <InputWithLabel>
+                <SLabel>Почта</SLabel>
+              </InputWithLabel>
+              <InputWithLabel>
+                <SLabel>Имя</SLabel>
+              </InputWithLabel>
+              <InputWithLabel>
+                <SLabel>Фамилия</SLabel>
+              </InputWithLabel>
+              <SInput bottom placeholder="Дата Рождения" type="date" />
+              <InputWithLabel>
+                <SLabel>Пароль</SLabel>
+              </InputWithLabel>
+              <InputWithLabel>
+                <SLabel>Подтверждение пароля</SLabel>
+              </InputWithLabel>
             </SForm>
           </SectionBlock>
         </Container>

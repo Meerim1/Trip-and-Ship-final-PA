@@ -13,6 +13,7 @@ import {
 } from "../components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import styled from "styled-components";
 
 class MainPage extends Component {
   render() {
@@ -49,5 +50,9 @@ class MainPage extends Component {
     );
   }
 }
+
+const SBackgrounf = styled(SectionBlock)`
+  background-image: url("")
+`
 
 export default MainPage;

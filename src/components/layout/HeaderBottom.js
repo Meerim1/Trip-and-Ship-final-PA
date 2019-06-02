@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
-import colors from "../../config/var";
+import { colors } from "../../config/var";
 
 class HeaderBottom extends Component {
   render() {
@@ -15,16 +15,16 @@ class HeaderBottom extends Component {
                 <Link to="/">Главная</Link>
               </Navlink>
               <Navlink className="font-link">
-                <Link to="/search:apps">Искать заявки на доставку</Link>
+                <Link to="/Requests">Все заявки</Link>
               </Navlink>
               <Navlink className="font-link">
-                <Link to="/search:trips">Искать путешествия</Link>
+                <Link to="/Trips">Все путешествия</Link>
               </Navlink>
               <Navlink className="font-link">
-                <Link to="/add:trip">Добавить путешествие</Link>
+                <Link to="/newTrip">Добавить путешествие</Link>
               </Navlink>
               <Navlink className="font-link">
-                <Link to="/add:app">Добавить заявку</Link>
+                <Link to="/newRequest">Добавить заявку</Link>
               </Navlink>
             </HeaderNav>
           </ThemeProvider>
