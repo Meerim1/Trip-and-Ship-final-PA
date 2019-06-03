@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-import BImage from "../static/images/bg3.jpeg"
+import BImage from "../static/images/bg3.jpeg";
 
 const styles = theme => ({
   input: {
@@ -48,45 +48,44 @@ class Trips extends Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <Layout>
         <BackgroundImage>
           <div style={{ position: "relative" }}>
-        <Container>
-          <SectionBlock>
-            <STitle>Найти путешественника</STitle>
-            <SForm row medium>
-              <TextField
-                className={classes.input}
-                // value={this.state.startPoint}
-                id="outlined-search"
-                label="Откуда"
-                type="search"
-                margin="normal"
-                variant="outlined"
-              />
-              <TextField
-                className={classes.input}
-                // value={this.state.endPoint}
-                id="outlined-search"
-                label="Куда"
-                type="search"
-                margin="normal"
-                variant="outlined"
-              />
-              <Button
-                className={classes.button}
-                variant="contained"
-                color="primary"
-              >
-                Искать
-              </Button>
-              {/* <SButtonBigger yellow>Искать</SButtonBigger> */}
-            </SForm>
-          </SectionBlock>
-        </Container>
-        </div>
+            <Container>
+              <SectionBlock>
+                <STitle>Найти путешественника</STitle>
+                <SForm row medium>
+                  <TextField
+                    className={classes.input}
+                    // value={this.state.startPoint}
+                    id="outlined-search"
+                    label="Откуда"
+                    type="search"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <TextField
+                    className={classes.input}
+                    // value={this.state.endPoint}
+                    id="outlined-search"
+                    label="Куда"
+                    type="search"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Искать
+                  </Button>
+                  {/* <SButtonBigger yellow>Искать</SButtonBigger> */}
+                </SForm>
+              </SectionBlock>
+            </Container>
+          </div>
         </BackgroundImage>
         <BackgroundWrapper>
           <Container>
@@ -106,7 +105,7 @@ class Trips extends Component {
       </Layout>
     );
   }
-};
+}
 
 const BackgroundImage = styled.div`
   position: relative;
