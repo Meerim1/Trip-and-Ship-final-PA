@@ -56,8 +56,8 @@ const SHeaderUpper = styled.div`
   position: sticky;
   background: ${colors.white};
   z-index: 10;
-  border-bottom: 1px solid ${colors.light_grey};
-  box-shadow: 1px 1px 5px ${colors.light_grey};
+  border-bottom: 1px solid ${colors.white_grey};
+  box-shadow: 1px 1px 5px ${colors.grey};
 `;
 
 const SHeaderUpWrapper = styled.div`

@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-import { Layout, SectionBlock, STitle, SForm } from "../components";
+import {
+  Layout,
+  SectionBlock,
+  STitle,
+  SForm,
+  BackgroundWrapper,
+  WhiteBackground
+} from "../components";
 import { Container } from "reactstrap";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import InputFiles from "react-input-files";
 import {
   Button,
   TextField,
@@ -23,13 +31,13 @@ import MoneyImg from "../static/icons/money.png";
 
 const styles = theme => ({
   input: {
-    marginRight: "1em",
+    marginRight: "1.5em",
     width: "100%",
     marginTop: "0",
     marginBottom: "0"
   },
   moneyInput: {
-    marginRight: "0.4em",
+    marginRight: "0.7em",
     width: "68%",
     marginTop: "0",
     marginBottom: "0"
@@ -87,18 +95,101 @@ class NewRequestPage extends Component {
 
     return (
       <Layout>
-        <Container>
-          <SectionBlock>
-            <STitle>Новая заявка</STitle>
-            <SForm medium>
-              <FlexWrapper>
+        <BackgroundWrapper paddingTop paddingBottom>
+          <Container
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <WhiteBackground main>
+              <STitle>Новая заявка</STitle>
+              <SForm medium>
+                <FlexWrapper>
+                  <FlexWrapper start>
+                    <img src={BoxImg} />
+                    <TextField
+                      focused
+                      className={classes.input}
+                      id="outlined-search"
+                      label="Вы хотите отправить"
+                      type="search"
+                      margin="normal"
+                      variant="outlined"
+                      onChange={this.onChange}
+                    />
+                  </FlexWrapper>
+                  <FlexWrapper start>
+                    <img src={WeightImg} width="40px" height="40px" />
+                    <FormControl className="selectInput" variant="outlined">
+                      <InputLabel htmlFor="label-weight">Вес</InputLabel>
+                      <Select
+                        input={
+                          <OutlinedInput name="weight" id="label-weight" />
+                        }
+                      >
+                        <option value="" />
+                        <option>менее 500гр</option>
+                        <option>менее 1кг</option>
+                        <option>менее 5кг</option>
+                        <option>более 5кг</option>
+                      </Select>
+                    </FormControl>
+                  </FlexWrapper>
+                </FlexWrapper>
+                <FlexWrapper>
+                  <FlexWrapper start>
+                    <img src={StartImg} />
+                    <TextField
+                      className={classes.input}
+                      id="outlined-search"
+                      label="Откуда"
+                      type="search"
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </FlexWrapper>
+                  <FlexWrapper start>
+                    <img src={EndImg} />
+                    <TextField
+                      className={classes.input}
+                      label="Куда"
+                      type="search"
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </FlexWrapper>
+                </FlexWrapper>
+                <FlexWrapper>
+                  <FlexWrapper start>
+                    <img src={DateImg} />
+                    <TextField
+                      className={classes.input}
+                      id="date"
+                      label="Дата"
+                      type="date"
+                      defaultValue="2017-05-24"
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </FlexWrapper>
+                  <FlexWrapper start>
+                    <img src={MoneyImg} />
+                    <TextField
+                      className={classes.moneyInput}
+                      label="Сколько готовы заплатить"
+                      type="search"
+                      margin="normal"
+                      variant="outlined"
+                    />
+                    <h6>сом</h6>
+                  </FlexWrapper>
+                </FlexWrapper>
                 <FlexWrapper start>
-                  <img src={BoxImg} width="40px" height="40px" />
+                  <img src={CommentImg} />
                   <TextField
-                    focused
-                    className={classes.input}
-                    id="outlined-search"
-                    label="Вы хотите отправить"
+                    id="filled-multiline-static"
+                    multiline
+                    rowsMax="4"
+                    className={classes.descriptionInput}
+                    label="Комментарий"
                     type="search"
                     margin="normal"
                     variant="outlined"
@@ -106,101 +197,27 @@ class NewRequestPage extends Component {
                   />
                 </FlexWrapper>
                 <FlexWrapper start>
-                  <img src={WeightImg} width="40px" height="40px" />
-                  <FormControl className="selectInput" variant="outlined">
-                    <InputLabel htmlFor="label-weight">Вес</InputLabel>
-                    <Select
-                      input={<OutlinedInput name="weight" id="label-weight" />}
-                    >
-                      <option value="" />
-                      <option>менее 500гр</option>
-                      <option>менее 1кг</option>
-                      <option>менее 5кг</option>
-                      <option>более 5кг</option>
-                    </Select>
-                  </FormControl>
+                  <img src={PhotoImg} />
+                  <InputFiles onChange={this.onChange}>
+                    <TextField
+                      id="outlined-file"
+                      label="Выберите файл"
+                      type="text"
+                      margin="normal"
+                      variant="outlined"
+                    />
+                  </InputFiles>
                 </FlexWrapper>
-              </FlexWrapper>
-              <FlexWrapper>
-                <FlexWrapper start>
-                  <img src={StartImg} width="40px" height="40px" />
-                  <TextField
-                    className={classes.input}
-                    id="outlined-search"
-                    label="Откуда"
-                    type="search"
-                    margin="normal"
-                    variant="outlined"
-                  />
-                </FlexWrapper>
-                <FlexWrapper start>
-                  <img src={EndImg} width="40px" height="40px" />
-                  <TextField
-                    className={classes.input}
-                    label="Куда"
-                    type="search"
-                    margin="normal"
-                    variant="outlined"
-                  />
-                </FlexWrapper>
-              </FlexWrapper>
-              <FlexWrapper>
-                <FlexWrapper start>
-                  <img src={DateImg} width="40px" height="40px" />
-                  <TextField
-                    className={classes.input}
-                    id="date"
-                    label="Дата"
-                    type="date"
-                    defaultValue="2017-05-24"
-                    margin="normal"
-                    variant="outlined"
-                  />
-                </FlexWrapper>
-                <FlexWrapper start>
-                  <img src={MoneyImg} width="40px" height="40px" />
-                  <TextField
-                    className={classes.moneyInput}
-                    label="Сколько вы готовы заплатить"
-                    type="search"
-                    margin="normal"
-                    variant="outlined"
-                  />
-                  <h6>сом</h6>
-                </FlexWrapper>
-              </FlexWrapper>
-              <FlexWrapper start>
-                <img src={CommentImg} width="40px" height="40px" />
-                <TextField
-                  id="filled-multiline-static"
-                  multiline
-                  rowsMax="4"
-                  className={classes.descriptionInput}
-                  label="Комментарий"
-                  type="search"
-                  margin="normal"
-                  variant="outlined"
-                  onChange={this.onChange}
-                />
-              </FlexWrapper>
-              <FlexWrapper start>
-                <img src={PhotoImg} width="40px" height="40px" />
-                <TextField
-                  id="outlined-file"
-                  // className={classes.descriptionInput}
-                  label="Выберите файл"
-                  type="file"
-                  margin="normal"
-                  variant="outlined"
-                  onChange={this.onChange}
-                />
-              </FlexWrapper>
-              <Button variant="contained" color="primary">
-                Создать
-              </Button>
-            </SForm>
-          </SectionBlock>
-        </Container>
+                <Button variant="contained" color="primary">
+                  Создать
+                </Button>
+              </SForm>
+            </WhiteBackground>
+            <WhiteBackground>
+              <p>Искать путешественников</p>
+            </WhiteBackground>
+          </Container>
+        </BackgroundWrapper>
       </Layout>
     );
   }
@@ -215,6 +232,8 @@ const FlexWrapper = styled.div`
   align-items: center;
   img {
     margin-right: 0.5em;
+    width: 40px;
+    height: 40px;
   }
   h6 {
     background-color: #d0d0f5;

@@ -1,16 +1,32 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import { Layout, TitleCenter, STitle, SectionBlock } from "../components";
+import {
+  Layout,
+  TitleCenter,
+  STitle,
+  SectionBlock,
+  BackgroundWrapper,
+  WhiteBackground,
+  UserCard
+} from "../components";
 
 class OneTripPage extends Component {
   render() {
     return (
       <Layout>
-        <Container>
-          <SectionBlock>
-            <STitle>Детали поездки</STitle>
-          </SectionBlock>
-        </Container>
+        <BackgroundWrapper paddingTop paddingBottom>
+          <Container
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <WhiteBackground full>
+              <STitle>Детали поездки</STitle>
+            </WhiteBackground>
+            <WhiteBackground>
+              <STitle>Автор</STitle>
+              <UserCard />
+            </WhiteBackground>
+          </Container>
+        </BackgroundWrapper>
       </Layout>
     );
   }

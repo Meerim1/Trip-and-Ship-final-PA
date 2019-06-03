@@ -5,9 +5,9 @@ const SForm = styled.form`
   display: flex;
   justify-content: space-between;
   flex-direction: ${props => (props.row ? "row" : "column")};
-  width: ${props => (props.medium ? "70%" : "40%")};
+  width: ${props => (props.medium ? "100%" : "40%")};
   align-items: center;
-  text-align: center
+  text-align: center;
 `;
 
 export default SForm;

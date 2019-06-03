@@ -7,7 +7,8 @@ import {
   RequestCard,
   SectionBlock,
   SInput,
-  SButtonBigger
+  SButtonBigger,
+  BackgroundWrapper
 } from "../components";
 import { Container } from "reactstrap";
 import styled from "styled-components";
@@ -74,25 +75,36 @@ class Requests extends Component {
                 margin="normal"
                 variant="outlined"
               />
-              <Button className={classes.button} variant="contained" color="primary">
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+              >
                 Искать
               </Button>
             </SForm>
-            <TitleCenter>Все заявки</TitleCenter>
-            <RequestWrapper>
-              <RequestCard />
-              <RequestCard />
-              <RequestCard />
-              <RequestCard />
-              <RequestCard />
-              <RequestCard />
-            </RequestWrapper>
           </SectionBlock>
         </Container>
+        <BackgroundWrapper>
+          <Container>
+            <SectionBlock>
+              <TitleCenter>Все заявки</TitleCenter>
+              <RequestWrapper>
+                <RequestCard />
+                <RequestCard />
+                <RequestCard />
+                <RequestCard />
+                <RequestCard />
+                <RequestCard />
+              </RequestWrapper>
+            </SectionBlock>
+          </Container>
+        </BackgroundWrapper>
       </Layout>
     );
   }
-}
+};
+
 const RequestWrapper = styled.div`
   align-items: center;
   justify-content: space-around;
@@ -111,5 +123,5 @@ const RequestWrapper = styled.div`
 Requests.propTypes = {
   classes: PropTypes.object.isRequired
 };
- 
+
 export default withStyles(styles)(Requests);

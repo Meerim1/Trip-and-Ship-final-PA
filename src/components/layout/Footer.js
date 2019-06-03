@@ -63,7 +63,7 @@ class Footer extends Component {
 const SFooter = styled.footer`
   padding: 2em 0;
   width: 100%;
-  background-color: #232f34;
+  background-color: #000015;
   color: #fefefe;
 `;
 

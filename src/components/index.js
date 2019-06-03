@@ -5,7 +5,9 @@ export { default as HeaderTop } from "./layout/HeaderTop";
 export { default as HeaderBottom } from "./layout/HeaderBottom"
 export { default as Footer } from "./layout/Footer";
 export { default as SectionBlock } from "./layout/SectionBlock";
-export {default as BackgroundWrapper } from "./layout/BackgroundWrapper";
+export { default as BackgroundWrapper } from "./layout/BackgroundWrapper";
+export { default as WhiteBackground } from "./layout/WhiteBackground";
+
 
 //elements
 export { default as SButton } from "./elements/SButton";
@@ -19,6 +21,13 @@ export { default as RequestCard } from "./elements/RequestCard";
 export { default as TripCard } from "./elements/TripCard";
 export { default as SLink } from "./elements/SLink";
 export { InputWithLabel, SLabel } from "./elements/InputWithLabel";
+export { default as FullWidthTabs } from "./elements/FullWidthTabs";
+export { default as UserCard } from "./elements/UserCard";
+
+
+
+
+
 
 
 
