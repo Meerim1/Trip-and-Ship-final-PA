@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { BoxIcon, LocationIcon, SButton } from "../../components";
 import { colors } from "../../config/var";
 
-class RequestCard extends Component {
+class RequestCard2 extends Component {
   render() {
     return (
       <SCard xs="4">
@@ -52,6 +52,10 @@ const SCard = styled(Card)`
   height: auto;
   box-shadow: 0px 0px 3px 0.5px #ced5e2;
   margin-bottom: 2.5em;
+  a {
+    text-decoration: none;
+    color: ${colors.dark_grey};
+  }
 `;
 
 const SCardHeader = styled(CardHeader)`
@@ -91,8 +95,11 @@ const SPrice = styled.div`
   h6 {
   }
 `;
+
 const LButton = styled(SButton)`
   color: ${colors.dark_grey};
   border: 1.5px solid ${colors.yellow};
 `;
-export default RequestCard;
+export default RequestCard2;
+
+

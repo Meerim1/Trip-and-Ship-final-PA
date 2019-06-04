@@ -12,9 +12,94 @@ import { Container } from "reactstrap";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import { Button } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import BImage from "../static/images/bg3.jpeg";
+import { startTrips } from "../actions/TripCardsAction";
+import { connect } from "react-redux";
+import PT from "prop-types";
+
+class Trips extends Component {
+  constructor() {
+    super();
+    this.state = {
+      q: ""
+    };
+    this.getTrips = this.getTrips.bind(this);
+  }
+
+  componentDidMount() {
+    this.getTrips();
+  }
+
+  getTrips() {
+    this.props.startTrips(this.state.q);
+  }
+
+  render() {
+    const { trips_objects, status, classes } = this.props
+
+    return (
+      <Layout>
+        <BackgroundImage>
+          <div style={{ position: "relative" }}>
+            <Container>
+              <SectionBlock>
+                <STitle>Найти путешественника</STitle>
+                <SForm row medium>
+                  <TextField
+                    className={classes.input}
+                    
+                    id="outlined-search"
+                    label="Откуда"
+                    type="search"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <TextField
+                    className={classes.input}
+                   
+                    id="outlined-search"
+                    label="Куда"
+                    type="search"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Искать
+                  </Button>
+                  
+                </SForm>
+              </SectionBlock>
+            </Container>
+          </div>
+        </BackgroundImage>
+        <BackgroundWrapper>
+          <Container>
+            <SectionBlock>
+              <TitleCenter>Все путешествия</TitleCenter>
+              <TripWrapper>
+              {
+                  trips_objects.map(c => (
+                    <TripCard {...c}/>
+                  ))
+              }
+              {
+                status === "loading" ?
+                  <p>Загрузка...</p>
+                  : null
+              }
+              </TripWrapper>
+            </SectionBlock>
+          </Container>
+        </BackgroundWrapper>
+      </Layout>
+    );
+  }
+}
 
 const styles = theme => ({
   input: {
@@ -32,80 +117,6 @@ const styles = theme => ({
     padding: "16px 30px"
   }
 });
-
-class Trips extends Component {
-  state = {
-    startPoint: "",
-    endPoint: ""
-  };
-
-  handleChange = name => event => {
-    this.setState({
-      ...this.state,
-      [name]: event.target.value
-    });
-  };
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <Layout>
-        <BackgroundImage>
-          <div style={{ position: "relative" }}>
-            <Container>
-              <SectionBlock>
-                <STitle>Найти путешественника</STitle>
-                <SForm row medium>
-                  <TextField
-                    className={classes.input}
-                    // value={this.state.startPoint}
-                    id="outlined-search"
-                    label="Откуда"
-                    type="search"
-                    margin="normal"
-                    variant="outlined"
-                  />
-                  <TextField
-                    className={classes.input}
-                    // value={this.state.endPoint}
-                    id="outlined-search"
-                    label="Куда"
-                    type="search"
-                    margin="normal"
-                    variant="outlined"
-                  />
-                  <Button
-                    className={classes.button}
-                    variant="contained"
-                    color="primary"
-                  >
-                    Искать
-                  </Button>
-                  {/* <SButtonBigger yellow>Искать</SButtonBigger> */}
-                </SForm>
-              </SectionBlock>
-            </Container>
-          </div>
-        </BackgroundImage>
-        <BackgroundWrapper>
-          <Container>
-            <SectionBlock>
-              <TitleCenter>Все путешествия</TitleCenter>
-              <TripWrapper>
-                <TripCard />
-                <TripCard />
-                <TripCard />
-                <TripCard />
-                <TripCard />
-                <TripCard />
-              </TripWrapper>
-            </SectionBlock>
-          </Container>
-        </BackgroundWrapper>
-      </Layout>
-    );
-  }
-}
 
 const BackgroundImage = styled.div`
   position: relative;
@@ -132,7 +143,20 @@ const TripWrapper = styled.div`
 `;
 
 Trips.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  trips_objects: PT.array.isRequired,
+  status: PT.string,
+  startTrips: PT.func.isRequired
 };
 
-export default withStyles(styles)(Trips);
+export default connect(
+  // mapStateToProps
+  state => ({
+    trips_objects: state.trips.objects,
+    status: state.trips.status
+  }),
+  // mapDispatchToProps
+  {
+    startTrips: startTrips
+  }
+)(withStyles(styles)(Trips));

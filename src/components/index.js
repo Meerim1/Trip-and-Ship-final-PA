@@ -18,6 +18,8 @@ export { default as SInput } from "./elements/SInput";
 export { default as STitle } from "./elements/STitle";
 export { default as SForm } from "./elements/SForm";
 export { default as RequestCard } from "./elements/RequestCard";
+export { default as RequestCard2 } from "./elements/RequestCard2";
+
 export { default as TripCard } from "./elements/TripCard";
 export { default as SLink } from "./elements/SLink";
 export { InputWithLabel, SLabel } from "./elements/InputWithLabel";

@@ -6,19 +6,31 @@ import AvImg from "../../static/images/avatar.jpg";
 import PontImg from "../../static/icons/point1.png";
 import { colors } from "../../config/var";
 import { Button } from "@material-ui/core";
+import PT from "prop-types";
 
 class TripCard extends Component {
-  render() {
+  shouldComponentUpdate(nextProps, nextState) {
     return (
-      <SCardWrapper>
+      nextProps.id !== this.props.id ||
+      nextProps.author !== this.props.author ||
+      nextProps.width !== this.props.width ||
+      nextProps.height !== this.props.height ||
+      nextProps.url !== this.props.url
+    );
+  }
+  render() {
+    const { id, author, width, height, download_url } = this.props;
+
+    return (
+      <SCardWrapper key={id}>
         <SLink to="/oneTrip">
           <SCard>
-            <Avatar src={AvImg} />
+            <Avatar src={download_url} />
             <SCardHeader>
-              <h5>Елена</h5>
+              <h5>{author}</h5>
               <SDate>
                 <span>Дата выезда:</span>
-                <p>23/07/2019</p>
+                <p>{width}</p>
               </SDate>
             </SCardHeader>
             <SCardBody>
@@ -57,7 +69,7 @@ const SCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-    background-color: white;
+  background-color: white;
   padding: 1em 2em;
   box-shadow: 0px 0px 3px 0.8px #ced5e2;
   margin-bottom: 2.5em;
@@ -97,6 +109,7 @@ const SCardHeader = styled.div`
 const SFooter = styled.div`
   margin-top: 1em;
 `;
+
 const SCardBody = styled.div`
   display: flex;
   justify-content: space-around;
@@ -112,6 +125,7 @@ const SCardBody = styled.div`
     margin-top: 0;
   }
 `;
+
 const SFlexDiv = styled.div`
   display: flex;
   justify-content: ${props => (props.between ? "space-between" : "flex-start")};
@@ -129,9 +143,19 @@ const SDate = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
 const LocacionDiv = styled.div`
   display: flex;
   align-items: flex-end;
 `;
+
+TripCard.propTypes = {
+  id: PT.number,
+  author: PT.string,
+  width: PT.number,
+  height: PT.number,
+  trips: PT.object.isRequired,
+  download_url: PT.string
+};
 
 export default TripCard;
