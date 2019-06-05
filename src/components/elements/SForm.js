@@ -5,7 +5,7 @@ const SForm = styled.form`
   display: flex;
   justify-content: space-between;
   flex-direction: ${props => (props.row ? "row" : "column")};
-  width: ${props => (props.medium ? "100%" : "40%")};
+  width: ${props => (props.full ? "100%" : props.medium ? "80%" : "50")};
   align-items: center;
   text-align: center;
 `;

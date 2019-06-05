@@ -158,4 +158,13 @@ TripCard.propTypes = {
   download_url: PT.string
 };
 
+
+TripCard.defaultProps = {
+  author: "Алия Маликова",
+  width: 321,
+  height: 123,
+  download_url:
+    "https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.dribbble.com%2Fusers%2F634336%2Fscreenshots%2F2246883%2F_____.png&f=1"
+};
+
 export default TripCard;

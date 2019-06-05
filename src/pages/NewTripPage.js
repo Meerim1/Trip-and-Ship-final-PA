@@ -58,7 +58,7 @@ class NewTripPage extends Component {
           >
             <WhiteBackground main>
               <STitle>Добавить свою поездку</STitle>
-              <SForm medium>
+              <SForm full>
                 <FlexWrapper>
                   <FlexWrapper start>
                     <img src={StartImg} width="40px" height="40px" />

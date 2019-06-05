@@ -101,7 +101,7 @@ class NewRequestPage extends Component {
           >
             <WhiteBackground main>
               <STitle>Новая заявка</STitle>
-              <SForm medium>
+              <SForm full>
                 <FlexWrapper>
                   <FlexWrapper start>
                     <img src={BoxImg} />
@@ -214,7 +214,10 @@ class NewRequestPage extends Component {
               </SForm>
             </WhiteBackground>
             <WhiteBackground>
-              <p>Искать путешественников</p>
+              <FlexWrapper>
+                <p>Искать путешественников</p>
+                
+              </FlexWrapper>
             </WhiteBackground>
           </Container>
         </BackgroundWrapper>

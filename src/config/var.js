@@ -29,6 +29,8 @@ const colors = {
   white: "#fefefe",
   yellow: "#3f56b5",
   red: "#FA5562",
-  black: "#0b0b0b"
+  black: "#0b0b0b",
+  shadow1: "#d0d0f5",
+  shadow2: "#ced5e2"
 };
 export { theme, colors };
