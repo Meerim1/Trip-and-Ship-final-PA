@@ -7,7 +7,7 @@ import {
   MainPage,
   NewRequestPage,
   NewTripPage,
-  RegisterPage,
+  RegistrationPage,
   Requests,
   Trips,
   ProfilePage,
@@ -24,7 +24,7 @@ class App extends Component {
           <Fragment>
             <Route exact path="/" component={MainPage} />
             <Route path="/about" component={AboutPage} />
-            <Route path="/register" component={RegisterPage} />
+            <Route path="/registration" component={RegistrationPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/newRequest" component={NewRequestPage} />
             <Route path="/newTrip" component={NewTripPage} />

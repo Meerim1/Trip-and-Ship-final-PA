@@ -7,8 +7,7 @@ import {
   SectionBlock,
   BackgroundWrapper,
   WhiteBackground,
-  UserCard,
-  RequestCard2
+  UserCard
 } from "../components";
 
 class OneTripPage extends Component {
@@ -17,11 +16,11 @@ class OneTripPage extends Component {
       <Layout>
         <BackgroundWrapper paddingTop paddingBottom>
           <Container
-            // style={{ display: "flex", justifyContent: "space-between" }}
+            style={{ display: "flex", justifyContent: "space-between" }}
           >
-            <WhiteBackground full>
+            <WhiteBackground main>
               <STitle>Детали поездки</STitle>
-              <RequestCard2 />
+              
             </WhiteBackground>
             <WhiteBackground>
               <STitle>Автор</STitle>

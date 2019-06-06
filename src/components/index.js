@@ -18,7 +18,7 @@ export { default as SInput } from "./elements/SInput";
 export { default as STitle } from "./elements/STitle";
 export { default as SForm } from "./elements/SForm";
 export { default as RequestCard } from "./elements/RequestCard";
-export { default as RequestCard2 } from "./elements/RequestCard2";
+export { default as RequestCard2 } from "./elements/RequestCard4";
 
 export { default as TripCard } from "./elements/TripCard";
 export { default as SLink } from "./elements/SLink";
@@ -40,7 +40,9 @@ export { default as Title } from "./mainpage/Title";
 export { default as SearchBox } from "./mainpage/SearchBox";
 export { default as TopRequests } from "./mainpage/TopRequests";
 export { default as TopTrips } from "./mainpage/TopTrips";
-export { default as SimpleSlider } from "./mainpage/MainSlide/MainSlider"
+export { default as SimpleSlider } from "./mainpage/MainSlide/MainSlider";
+export { default as StepCard } from "./mainpage/StepCard";
+
 
 
 //icons

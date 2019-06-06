@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import { SButton } from "../index";
 import { Link } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import { theme, colors } from "../../config/var";
@@ -33,9 +32,10 @@ class HeaderTop extends Component {
                 <SButton yellow to="/register">
                   Регистрация
                 </SButton> */}
-                <Button className={classes.button} variant="outlined" color="primary">Войти</Button>
+                
+                <Button className={classes.button} variant="outlined" color="primary"><Link style={{color: "inherit", textDecoration: "none"}} to="/login">Войти</Link></Button>
 
-                <Button className={classes.button} variant="contained" color="primary">Регистрация</Button>
+                <Button className={classes.button} variant="contained" color="primary"><Link style={{color: "inherit", textDecoration: "none"}} to="/registration">Регистрация</Link></Button>
               </BtnGroup>
             </SHeaderUpWrapper>
         </Container>
@@ -56,7 +56,7 @@ const SHeaderUpper = styled.div`
   position: sticky;
   background: ${colors.white};
   z-index: 10;
-  border-bottom: 1px solid ${colors.white_grey};
+  border-bottom: 1px solid ${colors.background_grey};
   box-shadow: 1px 1px 5px ${colors.grey};
 `;
 

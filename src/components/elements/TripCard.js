@@ -8,6 +8,7 @@ import { colors } from "../../config/var";
 import { Button } from "@material-ui/core";
 import PT from "prop-types";
 
+
 class TripCard extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return (
@@ -60,7 +61,8 @@ class TripCard extends Component {
 }
 const SCardWrapper = styled.div`
   width: 40%;
-  margin-bottom: 2.5em;
+  margin-bottom: 1em;
+  margin-top: 2em
 `;
 
 const SCard = styled.div`

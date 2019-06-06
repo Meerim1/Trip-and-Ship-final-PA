@@ -1,19 +1,21 @@
 import React, { Component } from "react";
+import { Container } from "reactstrap";
 import {
-  Layout,
-  STitle,
   SectionBlock,
+  Layout,
+  SInput,
+  STitle,
   SForm,
+  SLabel,
+  InputWithLabel,
   BackgroundWrapper,
   WhiteBackground
 } from "../components";
-import { Container } from "reactstrap";
 import styled from "styled-components";
 import {
   Button,
   TextField,
   InputLabel,
-  Select,
   FormControl,
   OutlinedInput,
   withStyles
@@ -25,7 +27,7 @@ import DateImg from "../static/icons/date.png";
 import TransportImg from "../static/icons/transport.png";
 import CommentImg from "../static/icons/comment.png";
 
-class NewTripPage extends Component {
+class RegistrationPage extends Component {
   render() {
     const { classes } = this.props;
 
@@ -36,7 +38,7 @@ class NewTripPage extends Component {
             style={{ display: "flex", justifyContent: "space-between" }}
           >
             <WhiteBackground main>
-              <STitle>Добавить свою поездку</STitle>
+              <STitle>Регистрация</STitle>
               <SForm full>
                 <FlexWrapper>
                   <FlexWrapper start>
@@ -44,7 +46,7 @@ class NewTripPage extends Component {
                     <TextField
                       className={classes.input}
                       id="outlined-search"
-                      label="Откуда"
+                      label="Имя Фамилия"
                       type="search"
                       margin="normal"
                       variant="outlined"
@@ -54,7 +56,7 @@ class NewTripPage extends Component {
                     <img src={EndImg} width="40px" height="40px" />
                     <TextField
                       className={classes.input}
-                      label="Куда"
+                      label="Логин"
                       type="search"
                       margin="normal"
                       variant="outlined"
@@ -67,39 +69,12 @@ class NewTripPage extends Component {
                     <TextField
                       className={classes.input}
                       id="date"
-                      label="Дата"
+                      label="Дата рождения"
                       type="date"
                       defaultValue="2017-05-24"
                       margin="normal"
                       variant="outlined"
                     />
-                  </FlexWrapper>
-                  <FlexWrapper start>
-                    <img src={TransportImg} width="40px" height="40px" />
-                    <FormControl
-                      className="selectInput"
-                      variant="outlined"
-                      style={{ width: "82.5%" }}
-                    >
-                      <InputLabel htmlFor="label-transport">
-                        Транспорт
-                      </InputLabel>
-                      <Select
-                        native
-                        input={
-                          <OutlinedInput
-                            name="transport"
-                            id="label-transport"
-                          />
-                        }
-                      >
-                        <option value="" />
-                        <option>Машина</option>
-                        <option>Самолет</option>
-                        <option>Автобус</option>
-                        <option>Поезд</option>
-                      </Select>
-                    </FormControl>
                   </FlexWrapper>
                 </FlexWrapper>
                 <FlexWrapper start>
@@ -123,14 +98,15 @@ class NewTripPage extends Component {
               </SForm>
             </WhiteBackground>
             <WhiteBackground>
-              <p>Искать путешественников</p>
+              <h6>Уже есть аккаунт?</h6>
+              <Button>Войти</Button>
             </WhiteBackground>
           </Container>
         </BackgroundWrapper>
       </Layout>
     );
   }
-};
+}
 
 const FlexWrapper = styled.div`
   width: 100%;
@@ -144,7 +120,7 @@ const FlexWrapper = styled.div`
   }
 `;
 
-NewTripPage.propTypes = {
+RegistrationPage.propTypes = {
   classes: PropTypes.object
 };
 
@@ -169,4 +145,5 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(NewTripPage);
+
+export default withStyles(styles)(RegistrationPage);

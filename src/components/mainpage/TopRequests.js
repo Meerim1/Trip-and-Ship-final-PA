@@ -34,6 +34,7 @@ const STopRequests = styled.div`
   padding-top: 1.5em;
   display: flex;
   margin-right: 10px;
+  padding-bottom: 0.5em;
   font-family: ${props => props.theme.font};
   a {
     text-decoration: none;

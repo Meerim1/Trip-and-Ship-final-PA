@@ -4,13 +4,13 @@ import { Layout, SimpleSlider } from "../components";
 import {
   SectionBlock,
   Title,
-  SearchBox,
   TitleCenter,
   TopRequests,
   TopTrips,
-  TextBlock,
   SForm,
-  BackgroundWrapper
+  BackgroundWrapper,
+  StepCard,
+  WhiteBackground
 } from "../components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -19,7 +19,8 @@ import PT from "prop-types";
 import { Button, TextField } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import BImage from "../static/images/bg3.jpeg";
-import { colors } from "../config/var"
+import { colors } from "../config/var";
+import { Link } from "react-router-dom";
 
 class MainPage extends Component {
   render() {
@@ -66,31 +67,35 @@ class MainPage extends Component {
               <FlexWrapper>
                 <TitleCenter>Новые заявки</TitleCenter>
                 <TopRequests />
-                <Button>Показать все</Button>
+                <Button variant="contained" color="primary">
+                  <Link style={{color: "inherit", textDecoration: "none"}} to="/requests">Показать все</Link>
+                </Button>
               </FlexWrapper>
             </SectionBlock>
-            
             <SectionBlock>
               <FlexWrapper>
                 <TitleCenter>Последние путешествия</TitleCenter>
                 <TripWrapper>
                   <TopTrips />
                 </TripWrapper>
-
-                <Button>Показать все</Button>
+                <Button variant="contained" color="primary">
+                  <Link style={{color: "inherit", textDecoration: "none"}} to="/trips">Показать все</Link>
+                </Button>
               </FlexWrapper>
+            </SectionBlock>
+            <WhiteBackground full>
+              <TitleCenter>Как отправить посылку с Trip and Ship</TitleCenter>
+              <StepsWrapper>
+                <StepCard />
+              </StepsWrapper>
+            </WhiteBackground>
+
+            <SectionBlock>
+              <TitleCenter>Отзывы пользователей</TitleCenter>
+              <SimpleSlider />
             </SectionBlock>
           </Container>
         </BackgroundWrapper>
-        <Container>
-          <SectionBlock>
-            <TitleCenter>Отправки через Trip and Ship это</TitleCenter>
-          </SectionBlock>
-          <SectionBlock>
-            <TitleCenter>Отзывы пользователей</TitleCenter>
-            <SimpleSlider />
-          </SectionBlock>
-        </Container>
       </Layout>
     );
   }
@@ -129,6 +134,8 @@ const BackgroundImage = styled.div`
   /* color: white; */
 `;
 
+const StepsWrapper = styled.div``;
+
 const FlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -136,7 +143,7 @@ const FlexWrapper = styled.div`
 `;
 
 const TripWrapper = styled.div`
-  padding-top: 4em;
+  padding-top: 2em;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -151,7 +158,7 @@ MainPage.propTypes = {
 const SLine = styled.div`
   height: 10px;
   width: 80%;
-  color: ${colors.shadow1}
+  color: ${colors.shadow1};
 `;
 
 export default withStyles(styles)(MainPage);

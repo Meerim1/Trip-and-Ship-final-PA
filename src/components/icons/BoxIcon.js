@@ -17,7 +17,6 @@ class BoxIcon extends PureComponent {
         strokeLinejoin="miter"
         fill="none"
         color="#7a8384"
-        style={{marginLeft: "65px"}}
       >
         {" "}
         <title id="inboxIconTitle">Фото товара отсутствует</title>{" "}
