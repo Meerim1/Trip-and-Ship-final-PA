@@ -17,6 +17,7 @@ const STopTrips = styled.div`
   padding-top: 1.5em;
   display: flex;
   justify-content: space-around;
+  width: 100%;
 `;
 
 export default TopTrips;

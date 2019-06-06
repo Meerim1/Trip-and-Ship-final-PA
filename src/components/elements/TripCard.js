@@ -71,10 +71,12 @@ const SCard = styled.div`
   justify-content: flex-start;
   background-color: white;
   padding: 1em 2em;
-  box-shadow: 0px 0px 3px 0.8px #ced5e2;
+  box-shadow: 0px 0px 3px 0.8px ${colors.shadow2};
   margin-bottom: 2.5em;
   position: relative;
-
+  &:hover{
+    box-shadow: 0px 0px 6px 2.2px ${colors.shadow1};
+  }
   p {
     margin-bottom: 0;
   }

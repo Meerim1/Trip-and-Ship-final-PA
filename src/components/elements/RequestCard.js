@@ -50,8 +50,11 @@ const SCard = styled(Card)`
   width: 30%;
   padding: 1em 1em;
   height: auto;
-  box-shadow: 0px 0px 3px 0.5px #ced5e2;
+  box-shadow: 0px 0px 3px 0.5px ${colors.shadow2};
   margin-bottom: 2.5em;
+  &:hover{
+    box-shadow: 0px 0px 6px 2.2px ${colors.shadow1};
+  }
   a {
     text-decoration: none;
     color: ${colors.dark_grey};

@@ -19,6 +19,7 @@ import PT from "prop-types";
 import { Button, TextField } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import BImage from "../static/images/bg3.jpeg";
+import { colors } from "../config/var"
 
 class MainPage extends Component {
   render() {
@@ -30,7 +31,7 @@ class MainPage extends Component {
             <Container>
               <SectionBlock>
                 <Title />
-                <SForm row medium>
+                <SForm row full>
                   <TextField
                     className={classes.input}
                     id="outlined-search"
@@ -62,20 +63,28 @@ class MainPage extends Component {
         <BackgroundWrapper>
           <Container>
             <SectionBlock>
-              <TitleCenter>Новые заявки</TitleCenter>
-              <TopRequests />
+              <FlexWrapper>
+                <TitleCenter>Новые заявки</TitleCenter>
+                <TopRequests />
+                <Button>Показать все</Button>
+              </FlexWrapper>
             </SectionBlock>
+            
             <SectionBlock>
-              <TitleCenter>Последние путешествия</TitleCenter>
-              <TopTrips />
+              <FlexWrapper>
+                <TitleCenter>Последние путешествия</TitleCenter>
+                <TripWrapper>
+                  <TopTrips />
+                </TripWrapper>
+
+                <Button>Показать все</Button>
+              </FlexWrapper>
             </SectionBlock>
           </Container>
         </BackgroundWrapper>
         <Container>
           <SectionBlock>
-            <TitleCenter>
-              Хотите отправить или можете доставить посылку?
-            </TitleCenter>
+            <TitleCenter>Отправки через Trip and Ship это</TitleCenter>
           </SectionBlock>
           <SectionBlock>
             <TitleCenter>Отзывы пользователей</TitleCenter>
@@ -120,12 +129,29 @@ const BackgroundImage = styled.div`
   /* color: white; */
 `;
 
-const SBackgrounf = styled(SectionBlock)`
-  background-image: url("");
+const FlexWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const TripWrapper = styled.div`
+  padding-top: 4em;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
 `;
 
 MainPage.propTypes = {
   classes: PT.object.isRequired
 };
+
+const SLine = styled.div`
+  height: 10px;
+  width: 80%;
+  color: ${colors.shadow1}
+`;
 
 export default withStyles(styles)(MainPage);
