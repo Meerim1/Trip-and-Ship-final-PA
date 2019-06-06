@@ -134,7 +134,9 @@ const BackgroundImage = styled.div`
   /* color: white; */
 `;
 
-const StepsWrapper = styled.div``;
+const StepsWrapper = styled.div`
+  height: 400px;
+`;
 
 const FlexWrapper = styled.div`
   display: flex;

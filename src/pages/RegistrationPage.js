@@ -21,11 +21,11 @@ import {
   withStyles
 } from "@material-ui/core";
 import PropTypes from "prop-types";
-import StartImg from "../static/icons/start.png";
-import EndImg from "../static/icons/end.png";
+import PasswordImg from "../static/icons/password1.png";
+import UserImg from "../static/icons/user1.png";
 import DateImg from "../static/icons/date.png";
-import TransportImg from "../static/icons/transport.png";
-import CommentImg from "../static/icons/comment.png";
+import PenImg from "../static/icons/pen.png";
+import MailImg from "../static/icons/email1.png";
 
 class RegistrationPage extends Component {
   render() {
@@ -39,53 +39,58 @@ class RegistrationPage extends Component {
           >
             <WhiteBackground main>
               <STitle>Регистрация</STitle>
-              <SForm full>
-                <FlexWrapper>
-                  <FlexWrapper start>
-                    <img src={StartImg} width="40px" height="40px" />
-                    <TextField
-                      className={classes.input}
-                      id="outlined-search"
-                      label="Имя Фамилия"
-                      type="search"
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </FlexWrapper>
-                  <FlexWrapper start>
-                    <img src={EndImg} width="40px" height="40px" />
-                    <TextField
-                      className={classes.input}
-                      label="Логин"
-                      type="search"
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </FlexWrapper>
-                </FlexWrapper>
-                <FlexWrapper>
-                  <FlexWrapper start>
-                    <img src={DateImg} width="40px" height="40px" />
-                    <TextField
-                      className={classes.input}
-                      id="date"
-                      label="Дата рождения"
-                      type="date"
-                      defaultValue="2017-05-24"
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </FlexWrapper>
+              <SForm medium>
+                <FlexWrapper start>
+                  <img src={UserImg} width="40px" height="40px" />
+                  <TextField
+                    className={classes.input}
+                    id="outlined-search"
+                    label="Имя"
+                    type="search"
+                    margin="normal"
+                    variant="outlined"
+                  />
                 </FlexWrapper>
                 <FlexWrapper start>
-                  <img src={CommentImg} width="40px" height="40px" />
+                  <img src={PenImg} width="40px" height="40px" />
                   <TextField
-                    id="filled-multiline-static"
-                    multiline
-                    rowsMax="4"
-                    className={classes.descriptionInput}
-                    label="Комментарий"
+                    className={classes.input}
+                    label="Фамилия"
                     type="search"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                </FlexWrapper>
+                <FlexWrapper start>
+                  <img src={MailImg} width="40px" height="40px" />
+                  <TextField
+                    className={classes.input}
+                    id="outlined-search"
+                    label="Почта"
+                    type="search"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                </FlexWrapper>
+                <FlexWrapper start>
+                  <img src={DateImg} width="40px" height="40px" />
+                  <TextField
+                    className={classes.input}
+                    id="date"
+                    label="Дата рождения"
+                    type="date"
+                    defaultValue="2017-05-24"
+                    margin="normal"
+                    variant="outlined"
+                  />
+                </FlexWrapper>
+                <FlexWrapper start>
+                  <img src={PasswordImg} width="40px" height="40px" />
+                  <TextField
+                    id="outlined-search"
+                    className={classes.input}
+                    label="Пароль"
+                    type="password"
                     margin="normal"
                     variant="outlined"
                     onChange={this.onChange}
@@ -144,6 +149,5 @@ const styles = theme => ({
     padding: "16px 30px"
   }
 });
-
 
 export default withStyles(styles)(RegistrationPage);
