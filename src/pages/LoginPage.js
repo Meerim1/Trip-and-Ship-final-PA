@@ -25,6 +25,26 @@ import PenImg from "../static/icons/pen.png";
 import MailImg from "../static/icons/email1.png";
 
 class LoginPage extends Component {
+  constructor(){
+    super();
+    this.state = ({
+      email: "",
+      password: ""
+    })
+  };
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    
+  }
+
   render() {
     const { classes } = this.props;
     return (
