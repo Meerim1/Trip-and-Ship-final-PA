@@ -59,7 +59,6 @@ const styles = theme => ({
 class NewRequestPage extends Component {
   constructor() {
     super();
-
     this.state = {
       title: "",
       weight: "",
@@ -73,20 +72,10 @@ class NewRequestPage extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  getCharacters() {
-    this.props.startCharactersQ(this.state.q);
-  }
-
+  
   handleChange(event) {
     this.setState({
-      title: event.target.value,
-      weight: event.target.value,
-      startPoint: event.target.value,
-      endPoint: event.target.value,
-      date: event.target.value,
-      description: event.target.value,
-      img: event.target.value,
-      payment: event.target.value
+      [event.target.name]: event.target.value
     });
   }
 

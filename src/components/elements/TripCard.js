@@ -10,17 +10,17 @@ import PT from "prop-types";
 
 
 class TripCard extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      nextProps.id !== this.props.id ||
-      nextProps.author !== this.props.author ||
-      nextProps.width !== this.props.width ||
-      nextProps.height !== this.props.height ||
-      nextProps.url !== this.props.url
-    );
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return (
+  //     nextProps.id !== this.props.id ||
+  //     nextProps.delivery !== this.props.delivery.delivery ||
+  //     nextProps.width !== this.props.width ||
+  //     nextProps.height !== this.props.height ||
+  //     nextProps.url !== this.props.url
+  //   );
+  // }
   render() {
-    const { id, author, width, height, download_url } = this.props;
+    const { id, startPoint, endPoint, delivery, dateOfDisactivate, description, transport, status, dateOfCreation, download_url } = this.props;
 
     return (
       <SCardWrapper key={id}>
@@ -28,10 +28,10 @@ class TripCard extends Component {
           <SCard>
             <Avatar src={download_url} />
             <SCardHeader>
-              <h5>{author}</h5>
+              <h5>{delivery.fio}</h5>
               <SDate>
                 <span>Дата выезда:</span>
-                <p>{width}</p>
+                <p>{dateOfDisactivate}</p>
               </SDate>
             </SCardHeader>
             <SCardBody>
@@ -40,14 +40,14 @@ class TripCard extends Component {
                   <LocationtImg src={PontImg} />
                   <span>откуда:</span>
                 </LocacionDiv>
-                <p> Бишкек, Кыргызстан</p>
+                <p>{startPoint}</p>
               </SFlexDiv>
               <SFlexDiv column>
                 <LocacionDiv>
                   <LocationtImg src={PontImg} />
                   <span>куда:</span>
                 </LocacionDiv>
-                <p> Москва, Россия</p>
+                <p>{endPoint}</p>
               </SFlexDiv>
             </SCardBody>
             <SFooter>
@@ -153,18 +153,17 @@ const LocacionDiv = styled.div`
   align-items: flex-end;
 `;
 
-TripCard.propTypes = {
+/* TripCard.propTypes = {
   id: PT.number,
-  author: PT.string,
+  delivery: PT.object,
   width: PT.number,
   height: PT.number,
-  trips: PT.object.isRequired,
-  download_url: PT.string
-};
-
+  /* trips: PT.object.isRequired, */
+  /* download_url: PT.string
+}; */
 
 TripCard.defaultProps = {
-  author: "Алия Маликова",
+  delivery: "Алия Маликова",
   width: 321,
   height: 123,
   download_url:

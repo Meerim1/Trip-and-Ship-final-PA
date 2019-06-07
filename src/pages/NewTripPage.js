@@ -24,8 +24,52 @@ import EndImg from "../static/icons/end.png";
 import DateImg from "../static/icons/date.png";
 import TransportImg from "../static/icons/transport.png";
 import CommentImg from "../static/icons/comment.png";
+import moment from "moment";
+import axios from "../config/utils";
 
 class NewTripPage extends Component {
+  constructor() {
+    super();
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      startPoint: "Karakol",
+      endPoint: "Batumi",
+      dateOfDisactivate: "12/12/1200",
+      description: "aslfksajdvhalsdvhlas",
+      transport: "Plane"
+    };
+  }
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+      transport: "Plane"
+    });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    
+    const trip = {
+      startPoint: this.state.startPoint,
+      endPoint: this.state.endPoint,
+      dateOfDisactivate: moment(this.state.dateOfBirth).format("DD/MM/YYYY"),
+      description: this.state.description,
+      transport: this.state.transport
+    };
+
+    axios
+      .post("https://touristandtrip.herokuapp.com/trip/create", trip)
+
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.error(trip);
+      });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -37,13 +81,14 @@ class NewTripPage extends Component {
           >
             <WhiteBackground main>
               <STitle>Добавить свою поездку</STitle>
-              <SForm full>
+              <SForm full onSubmit={this.handleSubmit}>
                 <FlexWrapper>
                   <FlexWrapper start>
                     <img src={StartImg} width="40px" height="40px" />
                     <TextField
                       className={classes.input}
-                      id="outlined-search"
+                      onChange={this.handleChange}
+                      name="startPoint"
                       label="Откуда"
                       type="search"
                       margin="normal"
@@ -54,6 +99,8 @@ class NewTripPage extends Component {
                     <img src={EndImg} width="40px" height="40px" />
                     <TextField
                       className={classes.input}
+                      onChange={this.handleChange}
+                      name="endPoint"
                       label="Куда"
                       type="search"
                       margin="normal"
@@ -66,7 +113,8 @@ class NewTripPage extends Component {
                     <img src={DateImg} width="40px" height="40px" />
                     <TextField
                       className={classes.input}
-                      id="date"
+                      onChange={this.handleChange}
+                      name="dateOfDisactivate"
                       label="Дата"
                       type="date"
                       defaultValue="2017-05-24"
@@ -88,6 +136,7 @@ class NewTripPage extends Component {
                         native
                         input={
                           <OutlinedInput
+                            onChange={this.handleChange}
                             name="transport"
                             id="label-transport"
                           />
@@ -105,7 +154,8 @@ class NewTripPage extends Component {
                 <FlexWrapper start>
                   <img src={CommentImg} width="40px" height="40px" />
                   <TextField
-                    id="filled-multiline-static"
+                    name="description"
+                    onChange={this.handleChange}
                     multiline
                     rowsMax="4"
                     className={classes.descriptionInput}
@@ -117,7 +167,7 @@ class NewTripPage extends Component {
                   />
                 </FlexWrapper>
 
-                <Button variant="contained" color="primary">
+                <Button type="submit" variant="contained" color="primary">
                   Добавить
                 </Button>
               </SForm>
@@ -130,7 +180,7 @@ class NewTripPage extends Component {
       </Layout>
     );
   }
-};
+}
 
 const FlexWrapper = styled.div`
   width: 100%;

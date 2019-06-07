@@ -1,36 +1,30 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 import {
-  SectionBlock,
   Layout,
   STitle,
   SForm,
   BackgroundWrapper,
-  WhiteBackground,
+  WhiteBackground
 } from "../components";
 import styled from "styled-components";
 import {
   Button,
   TextField,
-  InputLabel,
-  FormControl,
-  OutlinedInput,
   withStyles
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 import PasswordImg from "../static/icons/password1.png";
-import UserImg from "../static/icons/user1.png";
-import DateImg from "../static/icons/date.png";
-import PenImg from "../static/icons/pen.png";
 import MailImg from "../static/icons/email1.png";
+import axios from "../config/utils";
 
 class LoginPage extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.state = ({
+    this.state = {
       email: "",
       password: ""
-    })
+    };
   };
 
   handleChange = event => {
@@ -42,8 +36,22 @@ class LoginPage extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    
-  }
+    const user = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+
+    axios
+      .post("https://touristandtrip.herokuapp.com/api/registration", user)
+
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.error(user);
+      });
+  };
 
   render() {
     const { classes } = this.props;

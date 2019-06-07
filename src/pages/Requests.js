@@ -44,6 +44,8 @@ class Requests extends Component {
     currency: "EUR"
   };
 
+  
+
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value

@@ -8,9 +8,9 @@ export const FAIL_TRIPS = "FAIL_TRIPS";
 const queryTrips = (query_params = {}) => {
     const query_string = QS.stringify(query_params)
     return axios
-    .get(`https://picsum.photos/v2/list?page=2&limit=100&${query_string}`)
+    .get(`https://touristandtrip.herokuapp.com/trip/getAll`)
     .then(response => {
-      return response.data;
+      return response.data
     })
     .catch(error => {
       console.error("=((((");

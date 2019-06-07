@@ -17,6 +17,7 @@ const styles = theme => ({
 
 class HeaderTop extends Component {
   render() {
+
     const { classes } = this.props;
     return (
       <SHeaderUpper>
@@ -26,13 +27,6 @@ class HeaderTop extends Component {
                 <Link to="/">Trip and Ship</Link>
               </SHeaderLogo>
               <BtnGroup>
-                {/* <SButton dark to="/login">
-                  Войти
-                </SButton>
-                <SButton yellow to="/register">
-                  Регистрация
-                </SButton> */}
-                
                 <Button className={classes.button} variant="outlined" color="primary"><Link style={{color: "inherit", textDecoration: "none"}} to="/login">Войти</Link></Button>
 
                 <Button className={classes.button} variant="contained" color="primary"><Link style={{color: "inherit", textDecoration: "none"}} to="/registration">Регистрация</Link></Button>
