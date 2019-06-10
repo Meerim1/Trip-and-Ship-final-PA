@@ -10,7 +10,7 @@ class BoxIcon extends PureComponent {
         width="120px"
         height="120px"
         viewBox="0 0 24 24"
-        ariaLabelledby="inboxIconTitle inboxIconDesc"
+        aria-labelledby="inboxIconTitle inboxIconDesc"
         stroke="#7a8384"
         strokeWidth="0.4"
         strokeLinecap="square"

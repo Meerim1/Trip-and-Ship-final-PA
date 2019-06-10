@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import colors from "../../config/var";
 import { Col } from "reactstrap";
-import SButtonBigger from "../elements/SButton";
-import { ReverseIcon, SInput } from "../../components";
+import { ReverseIcon } from "../../components";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";

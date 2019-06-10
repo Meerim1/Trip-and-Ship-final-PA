@@ -25,11 +25,11 @@ class Trips extends Component {
       q: ""
     };
     this.getTrips = this.getTrips.bind(this);
-  }
+  };
 
   componentDidMount() {
     this.getTrips();
-  }
+  };
 
   getTrips() {
     this.props.startTrips(this.state.q);

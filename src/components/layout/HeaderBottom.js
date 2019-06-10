@@ -15,10 +15,10 @@ class HeaderBottom extends Component {
                 <Link to="/">Главная</Link>
               </Navlink>
               <Navlink className="font-link">
-                <Link to="/Requests">Все заявки</Link>
+                <Link to="/requests">Все заявки</Link>
               </Navlink>
               <Navlink className="font-link">
-                <Link to="/Trips">Все путешествия</Link>
+                <Link to="/trips">Все путешествия</Link>
               </Navlink>
               <Navlink className="font-link">
                 <Link to="/newTrip">Добавить путешествие</Link>
@@ -36,7 +36,7 @@ class HeaderBottom extends Component {
 
 const theme = {
   font: "Rubik"
-}
+};
 
 const HeaderDown = styled.div`
   padding: 1em 0;
@@ -57,7 +57,7 @@ const Navlink = styled.li`
     color: ${colors.yellow};
   }
   a {
-    font-family: ${props => (props.theme.font)};
+    font-family: ${props => props.theme.font};
     font-weight: 500;
     color: ${colors.dark_blue};
     text-decoration: none;

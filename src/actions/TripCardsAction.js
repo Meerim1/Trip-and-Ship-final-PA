@@ -6,11 +6,11 @@ export const SUCCESS_TRIPS = "SUCCESS_TRIPS";
 export const FAIL_TRIPS = "FAIL_TRIPS";
 
 const queryTrips = (query_params = {}) => {
-    const query_string = QS.stringify(query_params)
-    return axios
+  const query_string = QS.stringify(query_params);
+  return axios
     .get(`https://touristandtrip.herokuapp.com/trip/getAll`)
     .then(response => {
-      return response.data
+      return response.data;
     })
     .catch(error => {
       console.error("=((((");
@@ -18,11 +18,10 @@ const queryTrips = (query_params = {}) => {
 };
 
 export const startTrips = (q = "") => {
-  // ....
   return dispatch => {
     dispatch({
       type: START_TRIPS
-    })
+    });
     queryTrips({
       name: q
     })
@@ -50,7 +49,3 @@ export const failTrips = error => {
     payload: error
   };
 };
-
-// START_API_Q {status: loading}
-// SUCCESS_API_Q { posts: [...], status: ready }
-// FAIL_API_Q { status: error }

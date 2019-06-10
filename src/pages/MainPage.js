@@ -9,8 +9,8 @@ import {
   TopTrips,
   SForm,
   BackgroundWrapper,
-  StepCard,
-  WhiteBackground
+  WhiteBackground,
+  StepsBlock
 } from "../components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -68,7 +68,12 @@ class MainPage extends Component {
                 <TitleCenter>Новые заявки</TitleCenter>
                 <TopRequests />
                 <Button variant="contained" color="primary">
-                  <Link style={{color: "inherit", textDecoration: "none"}} to="/requests">Показать все</Link>
+                  <Link
+                    style={{ color: "inherit", textDecoration: "none" }}
+                    to="/requests"
+                  >
+                    Показать все
+                  </Link>
                 </Button>
               </FlexWrapper>
             </SectionBlock>
@@ -79,17 +84,19 @@ class MainPage extends Component {
                   <TopTrips />
                 </TripWrapper>
                 <Button variant="contained" color="primary">
-                  <Link style={{color: "inherit", textDecoration: "none"}} to="/trips">Показать все</Link>
+                  <Link
+                    style={{ color: "inherit", textDecoration: "none" }}
+                    to="/trips"
+                  >
+                    Показать все
+                  </Link>
                 </Button>
               </FlexWrapper>
             </SectionBlock>
             <WhiteBackground full>
               <TitleCenter>Как отправить посылку с Trip and Ship</TitleCenter>
-              <StepsWrapper>
-                <StepCard />
-              </StepsWrapper>
+              <StepsBlock />
             </WhiteBackground>
-
             <SectionBlock>
               <TitleCenter>Отзывы пользователей</TitleCenter>
               <SimpleSlider />
@@ -134,10 +141,6 @@ const BackgroundImage = styled.div`
   /* color: white; */
 `;
 
-const StepsWrapper = styled.div`
-  height: 400px;
-`;
-
 const FlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -156,11 +159,5 @@ const TripWrapper = styled.div`
 MainPage.propTypes = {
   classes: PT.object.isRequired
 };
-
-const SLine = styled.div`
-  height: 10px;
-  width: 80%;
-  color: ${colors.shadow1};
-`;
 
 export default withStyles(styles)(MainPage);

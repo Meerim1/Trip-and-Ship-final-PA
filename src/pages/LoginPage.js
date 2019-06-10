@@ -8,24 +8,25 @@ import {
   WhiteBackground
 } from "../components";
 import styled from "styled-components";
-import {
-  Button,
-  TextField,
-  withStyles
-} from "@material-ui/core";
+import { Button, TextField, withStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
 import PasswordImg from "../static/icons/password1.png";
 import MailImg from "../static/icons/email1.png";
-import axios from "../config/utils";
+import { startLogin } from "../actions/LoginUserAction";
+import PT from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 class LoginPage extends Component {
   constructor() {
     super();
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       email: "",
       password: ""
     };
-  };
+  }
 
   handleChange = event => {
     this.setState({
@@ -38,19 +39,13 @@ class LoginPage extends Component {
 
     const user = {
       email: this.state.email,
-      password: this.state.password,
+      password: this.state.password
     };
-
-    axios
-      .post("https://touristandtrip.herokuapp.com/api/registration", user)
-
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-      .catch(error => {
-        console.error(user);
-      });
+    this.props.startLogin(user).then(res => {
+      if (res) {
+        this.props.history.push("/");
+      }
+    });
   };
 
   render() {
@@ -63,10 +58,12 @@ class LoginPage extends Component {
           >
             <WhiteBackground main>
               <STitle>Войти</STitle>
-              <SForm medium>
+              <SForm medium onSubmit={this.handleSubmit}>
                 <FlexWrapper start>
                   <img src={MailImg} width="40px" height="40px" />
                   <TextField
+                    name="email"
+                    onChange={this.handleChange}
                     className={classes.input}
                     id="outlined-search"
                     label="Почта"
@@ -78,17 +75,18 @@ class LoginPage extends Component {
                 <FlexWrapper start>
                   <img src={PasswordImg} width="40px" height="40px" />
                   <TextField
+                    name="password"
+                    onChange={this.handleChange}
                     id="outlined-search"
                     className={classes.input}
                     label="Пароль"
                     type="password"
                     margin="normal"
                     variant="outlined"
-                    onChange={this.onChange}
                   />
                 </FlexWrapper>
 
-                <Button variant="contained" color="primary">
+                <Button type="submit" variant="contained" color="primary">
                   Добавить
                 </Button>
               </SForm>
@@ -141,4 +139,22 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(LoginPage);
+LoginPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+  _user: PT.array,
+  status: PT.string,
+  startLogin: PT.func.isRequired
+};
+
+export default withRouter(
+  connect(
+    state => ({
+      _user: state.user.object,
+      status: state.user.status
+    }),
+
+    {
+      startLogin: startLogin
+    }
+  )(withStyles(styles)(LoginPage))
+);

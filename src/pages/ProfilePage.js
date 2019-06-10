@@ -13,7 +13,6 @@ import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import AvImg from "../static/images/avatar.jpg";
 import BImg from "../static/images/airplane.jpeg";
-import { colors } from "../config/var";
 
 const styles = () => ({});
 

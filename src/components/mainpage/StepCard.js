@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { colors } from "../../config/var";
+import { defaultProps } from "recompose";
 
 function StepCard(props) {
+  const {number, header} = props;
   return (
-    <StepCardWrapper>
+    <StepCardWrapper >
       <StepCardHeader>
-        <span>1</span>
+        <span>{number}</span>
       </StepCardHeader>
       <StepCardBody>
-        <h4>Зарегистрируйтесь</h4>
+        <h4>{header}</h4>
       </StepCardBody>
     </StepCardWrapper>
   );

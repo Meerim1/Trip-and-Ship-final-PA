@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { BoxIcon } from "..";
@@ -50,7 +50,7 @@ class RequestCard extends Component {
             <SPrice>
               <span>вознаграждение:</span>
               <p>
-                400 <bold>сом</bold>
+                400 сом
               </p>
             </SPrice>
           </SDatePriceWrapper>
