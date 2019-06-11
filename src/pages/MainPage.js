@@ -93,7 +93,7 @@ class MainPage extends Component {
                 </Button>
               </FlexWrapper>
             </SectionBlock>
-            <WhiteBackground full>
+            <WhiteBackground paddingTop paddingBottom full>
               <TitleCenter>Как отправить посылку с Trip and Ship</TitleCenter>
               <StepsBlock />
             </WhiteBackground>

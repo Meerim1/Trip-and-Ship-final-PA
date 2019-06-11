@@ -20,7 +20,7 @@ const theme = createMuiTheme({
 
 const colors = {
   dark_blue: "#232f34",
-
+  dark_primary: "#274683",
   background_grey: "#f4f4f4",
   grey: "#7a8384",
   light_blue: "#d0d0f5",

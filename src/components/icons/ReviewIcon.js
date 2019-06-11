@@ -7,7 +7,7 @@ class ReviewIcon extends PureComponent {
         <defs>
           <style />
         </defs>
-        <title>Mobile Rating</title>
+        <title>Оставьте отзыв</title>
         <g id="Layer_2" data-name="Layer 2">
           <g id="Layer_1-2" data-name="Layer 1">
             <path

@@ -7,7 +7,7 @@ class RegistrationIcon extends PureComponent {
         <defs>
           <style />
         </defs>
-        <title>Checklist</title>
+        <title>Оставьте заявку</title>
         <g id="Layer_2" data-name="Layer 2">
           <g id="Layer_1-2" data-name="Layer 1">
             <path

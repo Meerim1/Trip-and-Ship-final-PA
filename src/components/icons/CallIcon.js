@@ -7,7 +7,7 @@ class CallIcon extends PureComponent {
         <defs>
           <style />
         </defs>
-        <title>Call price</title>
+        <title>Согласуйте цену и детали</title>
         <g id="Layer_2" data-name="Layer 2">
           <g id="Layer_1-2" data-name="Layer 1">
             <path
