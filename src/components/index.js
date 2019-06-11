@@ -3,6 +3,7 @@
 export { default as FullWidthTabs } from "./elements/FullWidthTabs";
 export { InputWithLabel, SLabel } from "./elements/InputWithLabel";
 export { default as RequestCard } from "./elements/RequestCard";
+
 //elements
 export { default as SButton } from "./elements/SButton";
 export { default as SButtonBigger } from "./elements/SButtonBigger";
@@ -15,6 +16,15 @@ export { default as TitleCenter } from "./elements/TitleCenter";
 export { default as TripCard } from "./elements/TripCard";
 export { default as UserCard } from "./elements/UserCard";
 export { default as BoxIcon } from "./icons/BoxIcon";
+export { default as CallIcon } from "./icons/CallIcon";
+export { default as DeliveryBoxIcon } from "./icons/DeliveryBoxIcon";
+export { default as OfferIcon } from "./icons/OfferIcon";
+export { default as RegistrationIcon } from "./icons/RegistrationIcon";
+export { default as RequestIcon } from "./icons/RequestIcon";
+export { default as ReviewIcon } from "./icons/ReviewIcon";
+export { default as TruckIcon } from "./icons/TruckIcon";
+
+
 //icons
 export { default as FacebookIcon } from "./icons/FacebookIcon";
 export { default as InstagramIcon } from "./icons/InstagramIcon";
@@ -32,6 +42,7 @@ export { default as SectionBlock } from "./layout/SectionBlock";
 export { default as WhiteBackground } from "./layout/WhiteBackground";
 export { default as SimpleSlider } from "./mainpage/MainSlide/MainSlider";
 export { default as SearchBox } from "./mainpage/SearchBox";
+
 
 //mainpage
 export { default as Title } from "./mainpage/Title";

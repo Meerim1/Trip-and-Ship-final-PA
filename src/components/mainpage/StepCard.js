@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { colors } from "../../config/var";
 import { defaultProps } from "recompose";
+import { CallIcon } from "../../components"
+import TruckIcon from "../icons/TruckIcon";
 
 function StepCard(props) {
-  const {number, header} = props;
+  const { number, header } = props;
   return (
-    <StepCardWrapper >
+    <StepCardWrapper>
+      <TruckIcon />
       <StepCardHeader>
         <span>{number}</span>
       </StepCardHeader>
@@ -17,7 +20,12 @@ function StepCard(props) {
   );
 }
 
-const StepCardWrapper = styled.div``;
+const StepCardWrapper = styled.div`
+svg{
+  height: 100px;
+  width: 100px;
+}
+`;
 
 const StepCardHeader = styled.div`
   span {
