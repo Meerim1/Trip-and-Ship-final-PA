@@ -16,6 +16,7 @@ import { startLogin } from "../actions/LoginUserAction";
 import PT from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 class LoginPage extends Component {
   constructor() {
@@ -37,15 +38,33 @@ class LoginPage extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const user = {
-      email: this.state.email,
-      password: this.state.password
-    };
-    this.props.startLogin(user).then(res => {
-      if (res) {
-        this.props.history.push("/");
-      }
-    });
+    axios
+      .get("https://touristandtrip.herokuapp.com/api/test", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Authorization": "Basic ekBtYWlsLnJ1OjEyMw==",
+          "Content-Type": "application/json;charset=UTF-8"
+        }
+      })
+
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+    // const user = {
+    //   email: this.state.email,
+    //   password: this.state.password
+    // };
+
+    // this.props.startLogin(user).then(res => {
+    //   if (res) {
+    //     this.props.history.push("/");
+    //   }
+    // });
   };
 
   render() {

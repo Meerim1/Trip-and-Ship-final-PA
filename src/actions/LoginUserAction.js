@@ -9,7 +9,7 @@ const loginRequests = (user = {}) => {
   console.log("login", user);
 
   const headers = {
-    "Authorization": "Basic bW1AZ21haWwuY29tOjEyMw==",
+    "Authorization": "Basic Z0BtYWlsLnJ1OjEyMw==",
     "Content-Type": "application/json;charset=UTF-8",
     "Access-Control-Allow-Origin": "*"
   };

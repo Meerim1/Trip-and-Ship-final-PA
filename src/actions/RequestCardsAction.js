@@ -1,15 +1,14 @@
 import axios from "axios";
 import QS from "query-string";
-import { request } from "https";
 
-export const START_REQUESTS = "START_REQUESTS";
-export const SUCCESS_REQUESTS = "SUCCESS_REQUESTS";
-export const FAIL_REQUESTS = "FAIL_REQUESTS";
+export const START_REQUESTS = "START_TRIPS";
+export const SUCCESS_REQUESTS = "SUCCESS_TRIPS";
+export const FAIL_REQUESTS = "FAIL_TRIPS";
 
-const queryRequests = () => {
-    // const query_string = QS.stringify(query_params)
-    return axios
-    .get(`https://touristandtrip.herokuapp.com/orders/getAll/`)
+const queryRequests = (query_params = {}) => {
+  const query_string = QS.stringify(query_params);
+  return axios
+    .get(`https://touristandtrip.herokuapp.com/orders/getAll`)
     .then(response => {
       return response.data;
     })
@@ -18,13 +17,14 @@ const queryRequests = () => {
     });
 };
 
-export const startRequests = () => {
-  // ....
+export const startRequests = (q = "") => {
   return dispatch => {
     dispatch({
       type: START_REQUESTS
+    });
+    queryRequests({
+      name: q
     })
-    queryRequests()
       .then(requests => {
         dispatch(successRequests(requests));
       })
@@ -49,4 +49,3 @@ export const failRequests = error => {
     payload: error
   };
 };
-

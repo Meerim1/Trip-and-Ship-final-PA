@@ -52,7 +52,7 @@ class Requests extends Component {
     this.getRequests();
   }
   getRequests() {
-    this.props.startRequests();
+    this.props.startRequests(this.state.q);
   }
 
   render() {
@@ -99,11 +99,16 @@ class Requests extends Component {
             <SectionBlock>
               <TitleCenter>Все заявки</TitleCenter>
               <RequestWrapper>
-                <RequestCard />
-                {/* {requests_objects.map(c => (
-                  < {RequestCard...c} />
-                ))}
-                {status === "loading" ? <p>Загрузка...</p> : null} */}
+              {
+                  requests_objects.map(c => (
+                    <RequestCard {...c}/>
+                  ))
+              }
+              {
+                status === "loading" ?
+                  <p>Загрузка...</p>
+                  : null
+              }
               </RequestWrapper>
             </SectionBlock>
           </Container>
@@ -145,7 +150,10 @@ const RequestWrapper = styled.div`
 `;
 
 Requests.propTypes = {
-  classes: PT.object.isRequired
+  classes: PropTypes.object.isRequired,
+  requests_objects: PT.array.isRequired,
+  status: PT.string,
+  startRequests: PT.func.isRequired
 };
 
 export default connect(

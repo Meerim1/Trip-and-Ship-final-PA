@@ -1,6 +1,6 @@
-import {SUCCESS_REQUESTS, START_REQUESTS, FAIL_REQUESTS } from "../actions/RequestCardsAction";
+import {START_REQUESTS, SUCCESS_REQUESTS, FAIL_REQUESTS } from "../actions/RequestCardsAction";
 
-const RequestsReducer = (state = {
+const TripsReducer = (state = {
   status: null, // ready / error / loading
   objects: [],
   last_error: null
@@ -28,4 +28,4 @@ const RequestsReducer = (state = {
   }
 }
 
-export default RequestsReducer;
+export default TripsReducer;

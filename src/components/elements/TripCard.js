@@ -8,7 +8,6 @@ import { colors } from "../../config/var";
 import { Button } from "@material-ui/core";
 import PT from "prop-types";
 
-
 class TripCard extends Component {
   // shouldComponentUpdate(nextProps, nextState) {
   //   return (
@@ -20,7 +19,18 @@ class TripCard extends Component {
   //   );
   // }
   render() {
-    const { id, startPoint, endPoint, delivery, dateOfDisactivate, description, transport, status, dateOfCreation, download_url } = this.props;
+    const {
+      id,
+      startPoint,
+      endPoint,
+      delivery,
+      dateOfDisactivate,
+      description,
+      transport,
+      status,
+      dateOfCreation,
+      download_url
+    } = this.props;
 
     return (
       <SCardWrapper key={id}>
@@ -59,10 +69,11 @@ class TripCard extends Component {
     );
   }
 }
+
 const SCardWrapper = styled.div`
   width: 40%;
   margin-bottom: 1em;
-  margin-top: 2em
+  margin-top: 2em;
 `;
 
 const SCard = styled.div`
@@ -76,7 +87,7 @@ const SCard = styled.div`
   box-shadow: 0px 0px 3px 0.8px ${colors.shadow2};
   margin-bottom: 2.5em;
   position: relative;
-  &:hover{
+  &:hover {
     box-shadow: 0px 0px 6px 2.2px ${colors.shadow1};
   }
   p {
@@ -153,14 +164,14 @@ const LocacionDiv = styled.div`
   align-items: flex-end;
 `;
 
-/* TripCard.propTypes = {
+TripCard.propTypes = {
   id: PT.number,
   delivery: PT.object,
   width: PT.number,
   height: PT.number,
-  /* trips: PT.object.isRequired, */
-  /* download_url: PT.string
-}; */
+  trips: PT.object.isRequired,
+  download_url: PT.string
+};
 
 TripCard.defaultProps = {
   delivery: "Алия Маликова",
