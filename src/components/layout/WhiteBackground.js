@@ -9,8 +9,8 @@ const WhiteBackground = styled.div`
     padding: 1.5em;
     box-shadow: 0px 0px 3px 0.5px #ced5e2;
     border-radius: 3px;
-    padding-top: ${props => (props.paddingTop ? "3em" : "0")};
-    padding-bottom: ${props => (props.paddingBottom ? "3em" : "0")};
+    padding-top: ${props => (props.paddingTop ? "3em" : "1.5em")};
+    padding-bottom: ${props => (props.paddingBottom ? "3em" : "1.5em")};
 `;
 
 export default WhiteBackground;

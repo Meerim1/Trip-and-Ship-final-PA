@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import SliderCard from "./SliderCard";
+import styled from "styled-components";
 
 export default class SimpleSlider extends Component {
   render() {
@@ -11,29 +13,20 @@ export default class SimpleSlider extends Component {
       slidesToScroll: 1
     };
     return (
-      <div>
-        <h2> Single Item</h2>
+      <SSlider>
         <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
+          <SliderCard name="Бегайым Айтикеева" />
+          <SliderCard name="Назар Токаев" />
+          <SliderCard name="Мадина Аешева" />
+          <SliderCard name="Канат Айткеев" />
+          <SliderCard name="Бермет Абылова" />
+          <SliderCard name="Нурсултан Назарбаев" />
         </Slider>
-      </div>
+      </SSlider>
     );
   }
 }
+
+const SSlider = styled.div`
+  width: 50%;
+`;

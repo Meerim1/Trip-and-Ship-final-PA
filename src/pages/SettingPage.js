@@ -6,7 +6,7 @@ class SettingPage extends Component{
         return(
             <Layout>
                 <BackgroundWrapper>
-                    <span>Hello!</span>
+                    <span>Settings</span>
                 </BackgroundWrapper>
             </Layout>
         )

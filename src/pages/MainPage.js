@@ -19,6 +19,7 @@ import PT from "prop-types";
 import { Button, TextField } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import BImage from "../static/images/bg3.jpeg";
+import FeedBackImg from "../static/images/feedback.jpg";
 import { colors } from "../config/var";
 import { Link } from "react-router-dom";
 
@@ -99,7 +100,12 @@ class MainPage extends Component {
             </WhiteBackground>
             <SectionBlock>
               <TitleCenter>Отзывы пользователей</TitleCenter>
-              <SimpleSlider />
+              <SliderBlock>
+                <SFeedBack src={FeedBackImg} />
+                <SimpleSlider />
+
+              </SliderBlock>
+              
             </SectionBlock>
           </Container>
         </BackgroundWrapper>
@@ -125,6 +131,18 @@ const styles = theme => ({
   }
 });
 
+const SliderBlock = styled.div`
+margin-top: 2.5em;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const SFeedBack = styled.img`
+  width: 470px;
+  height: 350px;
+  box-shadow: 0px 0px 3px 0.5px #ced5e2;
+  border-radius: 3px;
+`;
 const BackgroundImage = styled.div`
   position: relative;
   &::before {
