@@ -16,7 +16,7 @@ const styles = () => ({
 
 class RequestCard extends Component {
   render() {
-    const { classes } = this.props;
+    const { id, startPoint, endPoint, delivery, dateOfDisactivate, description, transport, status, dateOfCreation, download_url, classes } = this.props;
 
     return (
       <SCard xs="4">

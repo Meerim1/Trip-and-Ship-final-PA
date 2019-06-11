@@ -6,10 +6,10 @@ export const START_REQUESTS = "START_REQUESTS";
 export const SUCCESS_REQUESTS = "SUCCESS_REQUESTS";
 export const FAIL_REQUESTS = "FAIL_REQUESTS";
 
-const queryRequests = (query_params = {}) => {
-    const query_string = QS.stringify(query_params)
+const queryRequests = () => {
+    // const query_string = QS.stringify(query_params)
     return axios
-    .get(`https://touristandtrip.herokuapp.com/orders/2${query_string}`)
+    .get(`https://touristandtrip.herokuapp.com/orders/getAll/`)
     .then(response => {
       return response.data;
     })
@@ -18,15 +18,13 @@ const queryRequests = (query_params = {}) => {
     });
 };
 
-export const startRequests = (q = "") => {
+export const startRequests = () => {
   // ....
   return dispatch => {
     dispatch({
       type: START_REQUESTS
     })
-    queryRequests({
-      name: q
-    })
+    queryRequests()
       .then(requests => {
         dispatch(successRequests(requests));
       })
@@ -52,6 +50,3 @@ export const failRequests = error => {
   };
 };
 
-// START_API_Q {status: loading}
-// SUCCESS_API_Q { posts: [...], status: ready }
-// FAIL_API_Q { status: error }

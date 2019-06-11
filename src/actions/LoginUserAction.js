@@ -1,4 +1,4 @@
-import axios from "../config/utils";
+import axios from "axios";
 import { LOGIN_URL } from "../config/urls";
 
 export const START_LOGIN = "START_LOGIN";
@@ -7,7 +7,13 @@ export const FAIL_LOGIN = "FAIL_LOGIN";
 
 const loginRequests = (user = {}) => {
   console.log("login", user);
-  return axios.post(LOGIN_URL, user).then(res => {
+
+  const headers = {
+    "Authorization": "Basic bW1AZ21haWwuY29tOjEyMw==",
+    "Content-Type": "application/json;charset=UTF-8",
+    "Access-Control-Allow-Origin": "*"
+  };
+  return axios.post(LOGIN_URL, user, headers).then(res => {
     console.log(res);
     console.log(res.data);
     return res.data;

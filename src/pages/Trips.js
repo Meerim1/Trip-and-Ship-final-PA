@@ -21,10 +21,10 @@ import PT from "prop-types";
 class Trips extends Component {
   constructor() {
     super();
+    this.getTrips = this.getTrips.bind(this);
     this.state = {
       q: ""
     };
-    this.getTrips = this.getTrips.bind(this);
   };
 
   componentDidMount() {

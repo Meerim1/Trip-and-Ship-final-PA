@@ -1,4 +1,4 @@
-import {START_REQUESTS, START_REQUESTS, FAIL_REQUESTS } from "../actions/RequestCardsAction";
+import {SUCCESS_REQUESTS, START_REQUESTS, FAIL_REQUESTS } from "../actions/RequestCardsAction";
 
 const RequestsReducer = (state = {
   status: null, // ready / error / loading

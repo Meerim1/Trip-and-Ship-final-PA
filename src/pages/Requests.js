@@ -18,6 +18,9 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import BImage from "../static/images/package-reverse.jpeg";
+import { startRequests } from "../actions/RequestCardsAction";
+import { connect } from "react-redux";
+import PT from "prop-types";
 
 const styles = theme => ({
   container: {
@@ -37,22 +40,23 @@ const styles = theme => ({
 });
 
 class Requests extends Component {
-  state = {
-    name: "Cat in the Hat",
-    age: "",
-    multiline: "Controlled",
-    currency: "EUR"
-  };
+  constructor() {
+    super();
+    this.getRequests = this.getRequests.bind(this);
+    this.state = {
+      q: ""
+    };
+  }
 
-  
+  componentDidMount() {
+    this.getRequests();
+  }
+  getRequests() {
+    this.props.startRequests();
+  }
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value
-    });
-  };
   render() {
-    const { classes } = this.props;
+    const { requests_objects, status, classes } = this.props;
 
     return (
       <Layout>
@@ -96,11 +100,10 @@ class Requests extends Component {
               <TitleCenter>Все заявки</TitleCenter>
               <RequestWrapper>
                 <RequestCard />
-                <RequestCard />
-                <RequestCard />
-                <RequestCard />
-                <RequestCard />
-                <RequestCard />
+                {/* {requests_objects.map(c => (
+                  < {RequestCard...c} />
+                ))}
+                {status === "loading" ? <p>Загрузка...</p> : null} */}
               </RequestWrapper>
             </SectionBlock>
           </Container>
@@ -108,7 +111,7 @@ class Requests extends Component {
       </Layout>
     );
   }
-};
+}
 
 const BackgroundImage = styled.div`
   position: relative;
@@ -142,7 +145,17 @@ const RequestWrapper = styled.div`
 `;
 
 Requests.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PT.object.isRequired
 };
 
-export default withStyles(styles)(Requests);
+export default connect(
+  // mapStateToProps
+  state => ({
+    requests_objects: state.requests.objects,
+    status: state.requests.status
+  }),
+  // mapDispatchToProps
+  {
+    startRequests: startRequests
+  }
+)(withStyles(styles)(Requests));

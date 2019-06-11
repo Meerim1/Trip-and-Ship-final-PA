@@ -65,9 +65,8 @@ class LoginPage extends Component {
                     name="email"
                     onChange={this.handleChange}
                     className={classes.input}
-                    id="outlined-search"
                     label="Почта"
-                    type="search"
+                    type="email"
                     margin="normal"
                     variant="outlined"
                   />
@@ -77,7 +76,6 @@ class LoginPage extends Component {
                   <TextField
                     name="password"
                     onChange={this.handleChange}
-                    id="outlined-search"
                     className={classes.input}
                     label="Пароль"
                     type="password"

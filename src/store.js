@@ -1,11 +1,13 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 import thunk from 'redux-thunk';
-import TripsReducer from "./reducers/TripCardsReducer"
+import TripsReducer from "./reducers/TripCardsReducer";
+import RequestsReducer from "./reducers/RequestCardsReducer";
 import LoginReducer from "./reducers/LoginUserReducer";
 
 const rootReducer = combineReducers({
   trips: TripsReducer,
+  requests: RequestsReducer,
   user: LoginReducer
 });
 
