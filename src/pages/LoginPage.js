@@ -39,33 +39,33 @@ class LoginPage extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios
-      .get(LOGIN_URL, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Authorization": "Basic eUBtYWlsLnJ1OjEyMw==",
-          "Content-Type": "application/json;charset=UTF-8"
-        },
-        withCredentials: true
-      })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    // axios
+    //   .get(LOGIN_URL, {
+    //     headers: {
+    //       "Access-Control-Allow-Origin": "*",
+    //       "Authorization": "Basic eUBtYWlsLnJ1OjEyMw==",
+    //       "Content-Type": "application/json;charset=UTF-8"
+    //     },
+    //     withCredentials: true
+    //   })
+    //   .then(res => {
+    //     console.log(res);
+    //     console.log(res.data);
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //   });
 
-    // const user = {
-    //   email: this.state.email,
-    //   password: this.state.password
-    // };
+    const user = {
+      login: this.state.email,
+      password: this.state.password
+    };
 
-    // this.props.startLogin(user).then(res => {
-    //   if (res) {
-    //     this.props.history.push("/");
-    //   }
-    // });
+    this.props.startLogin(user).then(res => {
+      if (res) {
+        this.props.history.push("/");
+      }
+    });
   };
 
   render() {

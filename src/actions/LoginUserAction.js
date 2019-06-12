@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN_URL } from "../config/urls";
+import { GET_LOGIN_URL, POST_LOGIN_URL } from "../config/urls";
 
 export const START_LOGIN = "START_LOGIN";
 export const SUCCESS_LOGIN = "SUCCESS_LOGIN";
@@ -9,15 +9,29 @@ const loginRequests = (user = {}) => {
   console.log("login", user);
 
   const headers = {
-    "Authorization": "Basic Z0BtYWlsLnJ1OjEyMw==",
     "Content-Type": "application/json;charset=UTF-8",
     "Access-Control-Allow-Origin": "*"
   };
-  return axios.post(LOGIN_URL, user, headers).then(res => {
-    console.log(res);
-    console.log(res.data);
-    return res.data;
-  });
+  return axios
+    .post("http://localhost:3000/api/authorization", user, headers)
+    .then(res => {
+      console.log(res);
+      return res.data;
+    })
+    .then(res => {
+      const headersConf = {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": res
+      };
+      return axios.get("http://localhost:3000/api/test", headersConf).then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
+    })
+    .catch(error => {
+      console.log("headers", headers);
+    });
 };
 
 export const startLogin = user => {

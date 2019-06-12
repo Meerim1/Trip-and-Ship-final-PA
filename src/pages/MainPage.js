@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import { Layout, SimpleSlider } from "../components";
 import {
   SectionBlock,
   Title,
@@ -10,7 +9,10 @@ import {
   SForm,
   BackgroundWrapper,
   WhiteBackground,
-  StepsBlock
+  StepsBlock,
+  Layout,
+  SimpleSlider,
+  CountrySelect
 } from "../components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -33,6 +35,7 @@ class MainPage extends Component {
             <Container>
               <SectionBlock>
                 <Title />
+                {/* <CountrySelect /> */}
                 <SForm row full>
                   <TextField
                     className={classes.input}
@@ -103,9 +106,7 @@ class MainPage extends Component {
               <SliderBlock>
                 <SFeedBack src={FeedBackImg} />
                 <SimpleSlider />
-
               </SliderBlock>
-              
             </SectionBlock>
           </Container>
         </BackgroundWrapper>
@@ -132,7 +133,7 @@ const styles = theme => ({
 });
 
 const SliderBlock = styled.div`
-margin-top: 2.5em;
+  margin-top: 2.5em;
   display: flex;
   justify-content: space-between;
 `;
