@@ -21,7 +21,7 @@ class RequestCard extends Component {
     return (
       <SCard key={id} xs="4">
         <Link to="/oneRequest">
-          <SCardHeader>{item.name}</SCardHeader>
+          <SCardHeader>111</SCardHeader>
           <SCardBody>
             <SFlexDiv column>
               <LocacionDiv>
@@ -52,7 +52,7 @@ class RequestCard extends Component {
 
             <SPrice>
               <span>вознаграждение:</span>
-              <p>{item.price} сом</p>
+              <p>400 сом</p>
             </SPrice>
           </SDatePriceWrapper>
         </Link>

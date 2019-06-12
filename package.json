@@ -2,6 +2,7 @@
   "name": "individual-project-react",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://touristandtrip.herokuapp.com",
   "dependencies": {
     "@date-io/date-fns": "^1.3.6",
     "@material-ui/core": "^3.9.3",

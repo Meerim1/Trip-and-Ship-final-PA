@@ -1,5 +1,5 @@
-const ORIGIN = "https://touristandtrip.herokuapp.com";
-// const ORIGIN2 = "http://localhost:8010/proxy";
+const ORIGIN = "/";
 
+export const GET_REQ_URL = `${ORIGIN}orders/getAll`;
 
-export const LOGIN_URL = `${ORIGIN}`;
+export const LOGIN_URL = `${ORIGIN}api/test`;

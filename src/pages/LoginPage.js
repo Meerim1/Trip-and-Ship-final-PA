@@ -17,6 +17,7 @@ import PT from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import { LOGIN_URL } from "../config/urls"
 
 class LoginPage extends Component {
   constructor() {
@@ -39,14 +40,14 @@ class LoginPage extends Component {
     event.preventDefault();
 
     axios
-      .get("https://touristandtrip.herokuapp.com/api/test", {
+      .get(LOGIN_URL, {
         headers: {
           "Access-Control-Allow-Origin": "*",
-          "Authorization": "Basic ekBtYWlsLnJ1OjEyMw==",
+          "Authorization": "Basic eUBtYWlsLnJ1OjEyMw==",
           "Content-Type": "application/json;charset=UTF-8"
-        }
+        },
+        withCredentials: true
       })
-
       .then(res => {
         console.log(res);
         console.log(res.data);

@@ -1,5 +1,6 @@
 import axios from "axios";
 import QS from "query-string";
+import { GET_REQ_URL } from "../config/urls";
 
 export const START_REQUESTS = "START_TRIPS";
 export const SUCCESS_REQUESTS = "SUCCESS_TRIPS";
@@ -8,12 +9,12 @@ export const FAIL_REQUESTS = "FAIL_TRIPS";
 const queryRequests = (query_params = {}) => {
   const query_string = QS.stringify(query_params);
   return axios
-    .get(`https://touristandtrip.herokuapp.com/orders/getAll`)
+    .get(GET_REQ_URL)
     .then(response => {
       return response.data;
     })
     .catch(error => {
-      console.error("=((((");
+      console.error(error);
     });
 };
 
