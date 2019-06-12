@@ -15,18 +15,20 @@ const loginRequests = (user = {}) => {
   return axios
     .post("http://localhost:3000/api/authorization", user, headers)
     .then(res => {
-      console.log(res);
+
       return res.data;
     })
     .then(res => {
+      user = {...user, auth_key:res}
+      console.log(res)
       const headersConf = {
         "Content-Type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
         "Authorization": res
       };
       return axios.get("http://localhost:3000/api/test", headersConf).then(res => {
-        console.log(res);
-        console.log(res.data);
+
+        return {...user, isLogedIn: true};
       });
     })
     .catch(error => {
@@ -41,6 +43,7 @@ export const startLogin = user => {
     });
     return loginRequests(user)
       .then(user => {
+
         dispatch(successLogin(user));
         return true;
       })
@@ -53,6 +56,7 @@ export const startLogin = user => {
 };
 
 export const successLogin = user => {
+  console.log("payload",user)
   return {
     type: SUCCESS_LOGIN,
     payload: user

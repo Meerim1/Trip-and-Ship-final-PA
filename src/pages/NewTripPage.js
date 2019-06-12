@@ -25,7 +25,8 @@ import DateImg from "../static/icons/date.png";
 import TransportImg from "../static/icons/transport.png";
 import CommentImg from "../static/icons/comment.png";
 import moment from "moment";
-import axios from "../config/utils";
+import axios from "axios";
+import { connect } from "react-redux";
 
 class NewTripPage extends Component {
   constructor() {
@@ -33,37 +34,48 @@ class NewTripPage extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      startPoint: "Karakol",
-      endPoint: "Batumi",
-      dateOfDisactivate: "12/12/1200",
-      description: "aslfksajdvhalsdvhlas",
-      transport: "Plane"
+      startPoint: "",
+      endPoint: "",
+      dateOfDisactivate: "",
+      description: "",
+      transport: ""
     };
   }
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
-      transport: "Plane"
     });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    
+
     const trip = {
-      startPoint: this.state.startPoint,
-      endPoint: this.state.endPoint,
-      dateOfDisactivate: moment(this.state.dateOfBirth).format("DD/MM/YYYY"),
-      description: this.state.description,
-      transport: this.state.transport
+      "startPoint": this.state.startPoint,
+      "endPoint": this.state.endPoint,
+      "description": this.state.description,
+      "transport": this.state.transport,
+      "dateOfDisactivate": moment(this.state.dateOfBirth).format("DD/MM/YYYY")
     };
-
-    axios
-      .post("https://touristandtrip.herokuapp.com/trip/create", trip)
-
+    
+    // this.props.user.auth_key
+    const configHeaders = {
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": this.props.user.auth_key
+      }
+    };
+    return axios
+      .post(
+        "http://localhost:3000/trip/create",
+        trip,
+        configHeaders
+      )
       .then(res => {
         console.log(res);
         console.log(res.data);
+        return true
       })
       .catch(error => {
         console.error(trip);
@@ -71,7 +83,7 @@ class NewTripPage extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { user, classes } = this.props;
 
     return (
       <Layout>
@@ -143,10 +155,11 @@ class NewTripPage extends Component {
                         }
                       >
                         <option value="" />
-                        <option>Машина</option>
-                        <option>Самолет</option>
-                        <option>Автобус</option>
-                        <option>Поезд</option>
+                        <option>Plane</option>
+                        <option>Car</option>
+                        <option>Bus</option>
+                        <option>Bicycle</option>
+                        <option>Subway</option>
                       </Select>
                     </FormControl>
                   </FlexWrapper>
@@ -160,10 +173,9 @@ class NewTripPage extends Component {
                     rowsMax="4"
                     className={classes.descriptionInput}
                     label="Комментарий"
-                    type="search"
+                    type="description"
                     margin="normal"
                     variant="outlined"
-                    onChange={this.onChange}
                   />
                 </FlexWrapper>
 
@@ -195,7 +207,8 @@ const FlexWrapper = styled.div`
 `;
 
 NewTripPage.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 const styles = theme => ({
@@ -219,4 +232,8 @@ const styles = theme => ({
   }
 });
 
-export default withStyles(styles)(NewTripPage);
+export default connect(
+  state => ({
+    user: state.user.object
+  })
+)(withStyles(styles)(NewTripPage));

@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import { theme, colors } from "../../config/var";
 import { Button } from "@material-ui/core";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
 
 const styles = theme => ({
   button: {
     padding: "0.1em 1em",
-    "&$hover" :{
+    "&$hover": {
       backgroundColor: "white"
     }
   }
@@ -17,21 +18,74 @@ const styles = theme => ({
 
 class HeaderTop extends Component {
   render() {
-
-    const { classes } = this.props;
+    const { user, classes } = this.props;
     return (
       <SHeaderUpper>
         <Container>
-            <SHeaderUpWrapper>
-              <SHeaderLogo>
-                <Link to="/">Trip and Ship</Link>
-              </SHeaderLogo>
-              <BtnGroup>
-                <Button className={classes.button} variant="outlined" color="primary"><Link style={{color: "inherit", textDecoration: "none"}} to="/login">Войти</Link></Button>
+          <SHeaderUpWrapper>
+            <SHeaderLogo>
+              <Link to="/">Trip and Ship</Link>
+            </SHeaderLogo>
+            <BtnGroup>
+              {user.isLogedIn ? (
+                <>
+                  <Button
+                    className={classes.button}
+                    variant="outlined"
+                    color="primary"
+                  >
+                    <Link
+                      style={{ color: "inherit", textDecoration: "none" }}
+                      to="/account"
+                    >
+                      Личный кабинет
+                    </Link>
+                  </Button>
 
-                <Button className={classes.button} variant="contained" color="primary"><Link style={{color: "inherit", textDecoration: "none"}} to="/registration">Регистрация</Link></Button>
-              </BtnGroup>
-            </SHeaderUpWrapper>
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                  >
+                    <Link
+                      style={{ color: "inherit", textDecoration: "none" }}
+                      to="/registration"
+                    >
+                      Выйти
+                    </Link>
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    className={classes.button}
+                    variant="outlined"
+                    color="primary"
+                  >
+                    <Link
+                      style={{ color: "inherit", textDecoration: "none" }}
+                      to="/login"
+                    >
+                      Войти
+                    </Link>
+                  </Button>
+
+                  <Button
+                    className={classes.button}
+                    variant="contained"
+                    color="primary"
+                  >
+                    <Link
+                      style={{ color: "inherit", textDecoration: "none" }}
+                      to="/registration"
+                    >
+                      Регистрация
+                    </Link>
+                  </Button>
+                </>
+              )}
+            </BtnGroup>
+          </SHeaderUpWrapper>
         </Container>
       </SHeaderUpper>
     );
@@ -40,9 +94,9 @@ class HeaderTop extends Component {
 
 const BtnGroup = styled.div`
   display: flex;
-  width:20%;
+  width: 22%;
   justify-content: space-between;
-`
+`;
 
 const SHeaderUpper = styled.div`
   top: 0;
@@ -72,4 +126,7 @@ const SHeaderLogo = styled.div`
     }
   }
 `;
-export default withStyles(styles)(HeaderTop);
+export default connect(state => ({
+  user: state.user.object,
+  status: state.user.status
+}))(withStyles(styles)(HeaderTop));

@@ -39,26 +39,11 @@ class LoginPage extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    // axios
-    //   .get(LOGIN_URL, {
-    //     headers: {
-    //       "Access-Control-Allow-Origin": "*",
-    //       "Authorization": "Basic eUBtYWlsLnJ1OjEyMw==",
-    //       "Content-Type": "application/json;charset=UTF-8"
-    //     },
-    //     withCredentials: true
-    //   })
-    //   .then(res => {
-    //     console.log(res);
-    //     console.log(res.data);
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //   });
-
     const user = {
       login: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      auth_key: "",
+      isLogedIn: false
     };
 
     this.props.startLogin(user).then(res => {
@@ -105,7 +90,7 @@ class LoginPage extends Component {
                 </FlexWrapper>
 
                 <Button type="submit" variant="contained" color="primary">
-                  Добавить
+                  Войти
                 </Button>
               </SForm>
             </WhiteBackground>
@@ -159,7 +144,7 @@ const styles = theme => ({
 
 LoginPage.propTypes = {
   classes: PropTypes.object.isRequired,
-  _user: PT.array,
+  user: PT.array,
   status: PT.string,
   startLogin: PT.func.isRequired
 };
@@ -167,7 +152,7 @@ LoginPage.propTypes = {
 export default withRouter(
   connect(
     state => ({
-      _user: state.user.object,
+      user: state.user.object,
       status: state.user.status
     }),
 

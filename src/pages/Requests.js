@@ -99,16 +99,10 @@ class Requests extends Component {
             <SectionBlock>
               <TitleCenter>Все заявки</TitleCenter>
               <RequestWrapper>
-              {
-                  requests_objects.map(c => (
-                    <RequestCard {...c}/>
-                  ))
-              }
-              {
-                status === "loading" ?
-                  <p>Загрузка...</p>
-                  : null
-              }
+                {requests_objects.map(c => (
+                  <RequestCard {...c} />
+                ))}
+                {status === "loading" ? <p>Загрузка...</p> : null}
               </RequestWrapper>
             </SectionBlock>
           </Container>

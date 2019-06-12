@@ -28,6 +28,9 @@ import BoxImg from "../static/icons/box.png";
 import PhotoImg from "../static/icons/photo.png";
 import WeightImg from "../static/icons/weight.png";
 import MoneyImg from "../static/icons/money.png";
+import moment from "moment";
+import axios from "axios";
+import { connect } from "react-redux";
 
 const styles = theme => ({
   input: {
@@ -49,7 +52,7 @@ const styles = theme => ({
     width: "86%"
   },
   selectInput: {
-    width: "150px"
+    width: "100%"
   },
   button: {
     padding: "16px 30px"
@@ -59,24 +62,61 @@ const styles = theme => ({
 class NewRequestPage extends Component {
   constructor() {
     super();
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      title: "",
-      weight: "",
       startPoint: "",
       endPoint: "",
       date: "",
+      name: "",
       description: "",
-      img: "",
-      payment: ""
+      weight: "",
+      price: "",
+      volume: ""
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const request = {
+      startPoint: this.state.startPoint,
+      endPoint: this.state.endPoint,
+      item: {
+        name: this.state.name,
+        description: this.state.description,
+        weight: this.state.weight,
+        price: this.state.price,
+        volume: "200"
+      },
+      transport: this.state.transport,
+      date: moment(this.state.dateOfBirth).format("DD/MM/YYYY")
+    };
+
+    // this.props.user.auth_key
+    const configHeaders = {
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: this.props.user.auth_key
+      }
+    };
+    return axios
+      .post("http://localhost:3000/orders/create", request, configHeaders)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        return true;
+      })
+      .catch(error => {
+        console.error(request);
+      });
   }
 
   render() {
@@ -90,19 +130,19 @@ class NewRequestPage extends Component {
           >
             <WhiteBackground main>
               <STitle>Новая заявка</STitle>
-              <SForm full>
+              <SForm onSubmit={this.handleSubmit} full>
                 <FlexWrapper>
                   <FlexWrapper start>
                     <img src={BoxImg} />
                     <TextField
                       focused
                       className={classes.input}
-                      id="outlined-search"
+                      name="name"
                       label="Вы хотите отправить"
                       type="search"
                       margin="normal"
                       variant="outlined"
-                      onChange={this.onChange}
+                      onChange={this.handleChange}
                     />
                   </FlexWrapper>
                   <FlexWrapper start>
@@ -110,15 +150,19 @@ class NewRequestPage extends Component {
                     <FormControl className="selectInput" variant="outlined">
                       <InputLabel htmlFor="label-weight">Вес</InputLabel>
                       <Select
+                        name="weight"
+                        onChange={this.handleChange}
                         input={
-                          <OutlinedInput name="weight" id="label-weight" />
+                          <OutlinedInput
+                            className="selectInput"
+                          />
                         }
                       >
                         <option value="" />
-                        <option>менее 500гр</option>
-                        <option>менее 1кг</option>
-                        <option>менее 5кг</option>
-                        <option>более 5кг</option>
+                        <option  value="200">200</option>
+                        <option value="300">300</option>
+                        <option value="500">500</option>
+                        <option value="1000">1000</option>
                       </Select>
                     </FormControl>
                   </FlexWrapper>
@@ -128,21 +172,24 @@ class NewRequestPage extends Component {
                     <img src={StartImg} />
                     <TextField
                       className={classes.input}
-                      id="outlined-search"
+                      name="startPoint"
                       label="Откуда"
-                      type="search"
+                      type="text"
                       margin="normal"
                       variant="outlined"
+                      onChange={this.handleChange}
                     />
                   </FlexWrapper>
                   <FlexWrapper start>
                     <img src={EndImg} />
                     <TextField
                       className={classes.input}
+                      name="endPoint"
                       label="Куда"
-                      type="search"
+                      type="text"
                       margin="normal"
                       variant="outlined"
+                      onChange={this.handleChange}
                     />
                   </FlexWrapper>
                 </FlexWrapper>
@@ -157,16 +204,19 @@ class NewRequestPage extends Component {
                       defaultValue="2017-05-24"
                       margin="normal"
                       variant="outlined"
+                      onChange={this.handleChange}
                     />
                   </FlexWrapper>
                   <FlexWrapper start>
                     <img src={MoneyImg} />
                     <TextField
+                      name="price"
                       className={classes.moneyInput}
                       label="Сколько готовы заплатить"
-                      type="search"
+                      type="text"
                       margin="normal"
                       variant="outlined"
+                      onChange={this.handleChange}
                     />
                     <h6>сом</h6>
                   </FlexWrapper>
@@ -174,30 +224,19 @@ class NewRequestPage extends Component {
                 <FlexWrapper start>
                   <img src={CommentImg} />
                   <TextField
-                    id="filled-multiline-static"
+                    name="description"
                     multiline
                     rowsMax="4"
                     className={classes.descriptionInput}
                     label="Комментарий"
-                    type="search"
+                    type="text"
                     margin="normal"
                     variant="outlined"
-                    onChange={this.onChange}
+                    onChange={this.handleChange}
                   />
                 </FlexWrapper>
-                <FlexWrapper start>
-                  <img src={PhotoImg} />
-                  <InputFiles onChange={this.onChange}>
-                    <TextField
-                      id="outlined-file"
-                      label="Выберите файл"
-                      type="text"
-                      margin="normal"
-                      variant="outlined"
-                    />
-                  </InputFiles>
-                </FlexWrapper>
-                <Button variant="contained" color="primary">
+
+                <Button type="submit" variant="contained" color="primary">
                   Создать
                 </Button>
               </SForm>
@@ -205,7 +244,6 @@ class NewRequestPage extends Component {
             <WhiteBackground>
               <FlexWrapper>
                 <p>Искать путешественников</p>
-                
               </FlexWrapper>
             </WhiteBackground>
           </Container>
@@ -236,7 +274,10 @@ const FlexWrapper = styled.div`
 `;
 
 NewRequestPage.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(NewRequestPage);
+export default connect(state => ({
+  user: state.user.object
+}))(withStyles(styles)(NewRequestPage));
