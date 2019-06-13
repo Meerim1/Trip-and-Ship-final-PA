@@ -52,7 +52,7 @@ class RequestCard extends Component {
 
             <SPrice>
               <span>вознаграждение:</span>
-              <p>{item.price} сом</p>
+              <p>400 сом</p>
             </SPrice>
           </SDatePriceWrapper>
         </Link>
